@@ -1,549 +1,569 @@
 // !$*UTF8*$!
 {
-	archiveVersion = 1;
-	classes = {
+	"classes" = {
 	};
-	objectVersion = 110;
-	objects = {
-
-/* Begin PBXContainerItemProxy section */
-		692BC0B030704E8A0018FE1C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 692BC09A30704E890018FE1C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 692BC0A130704E890018FE1C;
-			remoteInfo = "Adapta-PE-Lite";
-		};
-		692BC0BA30704E8A0018FE1C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 692BC09A30704E890018FE1C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 692BC0A130704E890018FE1C;
-			remoteInfo = "Adapta-PE-Lite";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		692BC0A230704E890018FE1C /* Adapta-PE-Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Adapta-PE-Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		692BC0AF30704E8A0018FE1C /* Adapta-PE-LiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Adapta-PE-LiteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		692BC0B930704E8A0018FE1C /* Adapta-PE-LiteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Adapta-PE-LiteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-/* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		692BC0A430704E890018FE1C /* Adapta-PE-Lite */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Adapta-PE-Lite";
-			sourceTree = "<group>";
-		};
-		692BC0B230704E8A0018FE1C /* Adapta-PE-LiteTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Adapta-PE-LiteTests";
-			sourceTree = "<group>";
-		};
-		692BC0BC30704E8A0018FE1C /* Adapta-PE-LiteUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Adapta-PE-LiteUITests";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		692BC09F30704E890018FE1C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			files = (
+	"objectVersion" = "110";
+	"archiveVersion" = "1";
+	"validationLevel" = "1";
+	"objects" = {
+		"69C8216F305E06A700AABE63" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"files" = (
 			);
 		};
-		692BC0AC30704E8A0018FE1C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			files = (
+		"69C8217E305E06A700AABE63" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"files" = (
 			);
 		};
-		692BC0B630704E8A0018FE1C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			files = (
+		"69C82199305E06A700AABE63" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.thealejo.Adapta-PE-LiteUITests";
+				"DEVELOPMENT_TEAM" = "X8D8PPM8D7";
+				"MARKETING_VERSION" = "1.0";
+				"TEST_TARGET_NAME" = "Adapta-PE-Lite";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"STRING_CATALOG_GENERATE_SYMBOLS" = "NO";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"SWIFT_EMIT_LOC_STRINGS" = "NO";
+				"SWIFT_VERSION" = "5.0";
+				"SWIFT_APPROACHABLE_CONCURRENCY" = "YES";
+				"SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY" = "YES";
+				"CURRENT_PROJECT_VERSION" = "1";
+			};
+			"name" = "Debug";
+		};
+		"69C82194305E06A700AABE63" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"ENABLE_RESOURCE_ACCESS_AUDIO_INPUT" = "YES";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.thealejo.Adapta-PE-Lite";
+				"RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES" = "NO";
+				"MARKETING_VERSION" = "1.0";
+				"ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY" = "NO";
+				"SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY" = "YES";
+				"INFOPLIST_KEY_NSAppleEventsUsageDescription" = "Adapta PE Lite necesita automatización para controlar pestañas y ventanas por voz.";
+				"RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION" = "NO";
+				"REGISTER_APP_GROUPS" = "YES";
+				"ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS" = "YES";
+				"ENABLE_RESOURCE_ACCESS_CALENDARS" = "NO";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"AUTOMATION_APPLE_EVENTS" = "YES";
+				"STRING_CATALOG_GENERATE_SYMBOLS" = "YES";
+				"SWIFT_DEFAULT_ACTOR_ISOLATION" = "nonisolated";
+				"SWIFT_VERSION" = "5.0";
+				"SWIFT_APPROACHABLE_CONCURRENCY" = "YES";
+				"RUNTIME_EXCEPTION_DEBUGGING_TOOL" = "NO";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION" = "NO";
+				"ENABLE_PREVIEWS" = "YES";
+				"ENABLE_RESOURCE_ACCESS_LOCATION" = "NO";
+				"LD_RUNPATH_SEARCH_PATHS" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				"ENABLE_APP_SANDBOX" = "NO";
+				"ENABLE_RESOURCE_ACCESS_CAMERA" = "NO";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"INFOPLIST_KEY_LSApplicationCategoryType" = "public.app-category.productivity";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"INFOPLIST_KEY_NSMicrophoneUsageDescription" = "Adapta PE Lite procesará tu voz localmente.";
+				"INFOPLIST_KEY_NSSpeechRecognitionUsageDescription" = "Adapta PE Lite procesará tu voz localmente.";
+				"ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME" = "AccentColor";
+				"RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY" = "NO";
+				"COMBINE_HIDPI_IMAGES" = "YES";
+				"INFOPLIST_KEY_CFBundleDisplayName" = "Adapta PE Lite";
+				"ENABLE_RESOURCE_ACCESS_CONTACTS" = "NO";
+				"RUNTIME_EXCEPTION_ALLOW_JIT" = "NO";
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"INFOPLIST_KEY_NSHumanReadableCopyright" = "";
+				"DEVELOPMENT_TEAM" = "X8D8PPM8D7";
+			};
+			"name" = "Release";
+		};
+		"69C82170305E06A700AABE63" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"files" = (
 			);
 		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		692BC09930704E890018FE1C = {
-			isa = PBXGroup;
-			children = (
-				692BC0A430704E890018FE1C /* Adapta-PE-Lite */,
-				692BC0B230704E8A0018FE1C /* Adapta-PE-LiteTests */,
-				692BC0BC30704E8A0018FE1C /* Adapta-PE-LiteUITests */,
-				692BC0A330704E890018FE1C /* Products */,
+		"69C8217F305E06A700AABE63" = {
+			"buildRules" = (
 			);
-			sourceTree = "<group>";
+			"buildConfigurationList" = "69C82195305E06A700AABE63";
+			"productReference" = "69C82180305E06A700AABE63";
+			"productType" = "com.apple.product-type.bundle.unit-test";
+			"productName" = "Adapta-PE-LiteTests";
+			"isa" = "PBXNativeTarget";
+			"fileSystemSynchronizedGroups" = (
+				"69C82183305E06A700AABE63",
+			);
+			"dependencies" = (
+				"69C82182305E06A700AABE63",
+			);
+			"buildPhases" = (
+				"69C8217C305E06A700AABE63",
+				"69C8217D305E06A700AABE63",
+				"69C8217E305E06A700AABE63",
+			);
+			"name" = "Adapta-PE-LiteTests";
 		};
-		692BC0A330704E890018FE1C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				692BC0A230704E890018FE1C /* Adapta-PE-Lite.app */,
-				692BC0AF30704E8A0018FE1C /* Adapta-PE-LiteTests.xctest */,
-				692BC0B930704E8A0018FE1C /* Adapta-PE-LiteUITests.xctest */,
+		"69C8216A305E06A700AABE63" = {
+			"isa" = "PBXGroup";
+			"sourceTree" = "<group>";
+			"children" = (
+				"69C82175305E06A700AABE63",
+				"69C82183305E06A700AABE63",
+				"69C8218D305E06A700AABE63",
+				"69C82174305E06A700AABE63",
 			);
-			name = Products;
-			sourceTree = "<group>";
 		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		692BC0A130704E890018FE1C /* Adapta-PE-Lite */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 692BC0C130704E8A0018FE1C /* Build configuration list for PBXNativeTarget "Adapta-PE-Lite" */;
-			buildPhases = (
-				692BC09E30704E890018FE1C /* Sources */,
-				692BC09F30704E890018FE1C /* Frameworks */,
-				692BC0A030704E890018FE1C /* Resources */,
+		"69C82195305E06A700AABE63" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"69C82196305E06A700AABE63",
+				"69C82197305E06A700AABE63",
 			);
-			buildRules = (
-			);
-			fileSystemSynchronizedGroups = (
-				692BC0A430704E890018FE1C /* Adapta-PE-Lite */,
-			);
-			name = "Adapta-PE-Lite";
-			productName = "Adapta-PE-Lite";
-			productReference = 692BC0A230704E890018FE1C /* Adapta-PE-Lite.app */;
-			productType = "com.apple.product-type.application";
+			"defaultConfigurationName" = "Release";
 		};
-		692BC0AE30704E8A0018FE1C /* Adapta-PE-LiteTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 692BC0C430704E8A0018FE1C /* Build configuration list for PBXNativeTarget "Adapta-PE-LiteTests" */;
-			buildPhases = (
-				692BC0AB30704E8A0018FE1C /* Sources */,
-				692BC0AC30704E8A0018FE1C /* Frameworks */,
-				692BC0AD30704E8A0018FE1C /* Resources */,
+		"69C82171305E06A700AABE63" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"files" = (
 			);
-			buildRules = (
-			);
-			dependencies = (
-				692BC0B130704E8A0018FE1C /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				692BC0B230704E8A0018FE1C /* Adapta-PE-LiteTests */,
-			);
-			name = "Adapta-PE-LiteTests";
-			productName = "Adapta-PE-LiteTests";
-			productReference = 692BC0AF30704E8A0018FE1C /* Adapta-PE-LiteTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		692BC0B830704E8A0018FE1C /* Adapta-PE-LiteUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 692BC0C730704E8A0018FE1C /* Build configuration list for PBXNativeTarget "Adapta-PE-LiteUITests" */;
-			buildPhases = (
-				692BC0B530704E8A0018FE1C /* Sources */,
-				692BC0B630704E8A0018FE1C /* Frameworks */,
-				692BC0B730704E8A0018FE1C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				692BC0BB30704E8A0018FE1C /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				692BC0BC30704E8A0018FE1C /* Adapta-PE-LiteUITests */,
-			);
-			name = "Adapta-PE-LiteUITests";
-			productName = "Adapta-PE-LiteUITests";
-			productReference = 692BC0B930704E8A0018FE1C /* Adapta-PE-LiteUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+		"69C82180305E06A700AABE63" = {
+			"path" = "Adapta-PE-LiteTests.xctest";
+			"isa" = "PBXFileReference";
+			"includeInIndex" = "0";
+			"explicitFileType" = "wrapper.cfbundle";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
 		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		692BC09A30704E890018FE1C /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2700;
-				LastUpgradeCheck = 2700;
-				TargetAttributes = {
-					692BC0A130704E890018FE1C = {
-						CreatedOnToolsVersion = 27.0;
+		"69C8216B305E06A700AABE63" = {
+			"buildConfigurationList" = "69C8216E305E06A700AABE63";
+			"targets" = (
+				"69C82172305E06A700AABE63",
+				"69C8217F305E06A700AABE63",
+				"69C82189305E06A700AABE63",
+			);
+			"minimizedProjectReferenceProxies" = "1";
+			"developmentRegion" = "en";
+			"knownRegions" = (
+				"en",
+				"Base",
+			);
+			"isa" = "PBXProject";
+			"productRefGroup" = "69C82174305E06A700AABE63";
+			"projectDirPath" = "";
+			"attributes" = {
+				"LastSwiftUpdateCheck" = "2700";
+				"BuildIndependentTargetsInParallel" = "1";
+				"LastUpgradeCheck" = "2700";
+				"TargetAttributes" = {
+					"69C82189305E06A700AABE63" = {
+						"TestTargetID" = "69C82172305E06A700AABE63";
+						"CreatedOnToolsVersion" = "27.0";
 					};
-					692BC0AE30704E8A0018FE1C = {
-						CreatedOnToolsVersion = 27.0;
-						TestTargetID = 692BC0A130704E890018FE1C;
+					"69C82172305E06A700AABE63" = {
+						"CreatedOnToolsVersion" = "27.0";
 					};
-					692BC0B830704E8A0018FE1C = {
-						CreatedOnToolsVersion = 27.0;
-						TestTargetID = 692BC0A130704E890018FE1C;
+					"69C8217F305E06A700AABE63" = {
+						"TestTargetID" = "69C82172305E06A700AABE63";
+						"CreatedOnToolsVersion" = "27.0";
 					};
 				};
 			};
-			buildConfigurationList = 692BC09D30704E890018FE1C /* Build configuration list for PBXProject "Adapta-PE-Lite" */;
-			developmentRegion = en;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 692BC09930704E890018FE1C;
-			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
-			productRefGroup = 692BC0A330704E890018FE1C /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				692BC0A130704E890018FE1C /* Adapta-PE-Lite */,
-				692BC0AE30704E8A0018FE1C /* Adapta-PE-LiteTests */,
-				692BC0B830704E8A0018FE1C /* Adapta-PE-LiteUITests */,
+			"hasScannedForEncodings" = "0";
+			"projectRoot" = "";
+			"preferredProjectObjectVersion" = "77";
+			"mainGroup" = "69C8216A305E06A700AABE63";
+		};
+		"69C82186305E06A700AABE63" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"files" = (
 			);
 		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		692BC0A030704E890018FE1C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			files = (
-			);
+		"69C82181305E06A700AABE63" = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "69C8216B305E06A700AABE63";
+			"remoteGlobalIDString" = "69C82172305E06A700AABE63";
+			"remoteInfo" = "Adapta-PE-Lite";
+			"proxyType" = "1";
 		};
-		692BC0AD30704E8A0018FE1C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			files = (
-			);
-		};
-		692BC0B730704E8A0018FE1C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			files = (
-			);
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		692BC09E30704E890018FE1C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			files = (
-			);
-		};
-		692BC0AB30704E8A0018FE1C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			files = (
-			);
-		};
-		692BC0B530704E8A0018FE1C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			files = (
-			);
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		692BC0B130704E8A0018FE1C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 692BC0A130704E890018FE1C /* Adapta-PE-Lite */;
-			targetProxy = 692BC0B030704E8A0018FE1C /* PBXContainerItemProxy */;
-		};
-		692BC0BB30704E8A0018FE1C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 692BC0A130704E890018FE1C /* Adapta-PE-Lite */;
-			targetProxy = 692BC0BA30704E8A0018FE1C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		692BC0BF30704E8A0018FE1C /* Debug configuration for PBXProject "Adapta-PE-Lite" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = X8D8PPM8D7;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
+		"69C82190305E06A700AABE63" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"DEVELOPMENT_TEAM" = "X8D8PPM8D7";
+				"CLANG_WARN_RANGE_LOOP_ANALYSIS" = "YES";
+				"ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS" = "YES";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"CLANG_WARN_INFINITE_RECURSION" = "YES";
+				"ONLY_ACTIVE_ARCH" = "YES";
+				"GCC_WARN_UNUSED_VARIABLE" = "YES";
+				"CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING" = "YES";
+				"CLANG_WARN_UNGUARDED_AVAILABILITY" = "YES_AGGRESSIVE";
+				"COPY_PHASE_STRIP" = "NO";
+				"CLANG_WARN_BOOL_CONVERSION" = "YES";
+				"CLANG_WARN_ENUM_CONVERSION" = "YES";
+				"CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS" = "YES";
+				"CLANG_WARN_COMMA" = "YES";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG $(inherited)";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"CLANG_WARN_INT_CONVERSION" = "YES";
+				"ENABLE_STRICT_OBJC_MSGSEND" = "YES";
+				"CLANG_WARN_SUSPICIOUS_MOVE" = "YES";
+				"CLANG_WARN_EMPTY_BODY" = "YES";
+				"SDKROOT" = "macosx";
+				"CLANG_WARN_DOCUMENTATION_COMMENTS" = "YES";
+				"MTL_ENABLE_DEBUG_INFO" = "INCLUDE_SOURCE";
+				"MTL_FAST_MATH" = "YES";
+				"CLANG_ENABLE_OBJC_ARC" = "YES";
+				"GCC_WARN_UNINITIALIZED_AUTOS" = "YES_AGGRESSIVE";
+				"GCC_C_LANGUAGE_STANDARD" = "gnu17";
+				"CLANG_ENABLE_MODULES" = "YES";
+				"ALWAYS_SEARCH_USER_PATHS" = "NO";
+				"CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF" = "YES";
+				"CLANG_WARN_DIRECT_OBJC_ISA_USAGE" = "YES_ERROR";
+				"ENABLE_TESTABILITY" = "YES";
+				"GCC_NO_COMMON_BLOCKS" = "YES";
+				"CLANG_WARN_CONSTANT_CONVERSION" = "YES";
+				"CLANG_WARN_OBJC_ROOT_CLASS" = "YES_ERROR";
+				"LOCALIZATION_PREFERS_STRING_CATALOGS" = "YES";
+				"CLANG_CXX_LANGUAGE_STANDARD" = "gnu++20";
+				"GCC_WARN_64_TO_32_BIT_CONVERSION" = "YES";
+				"CLANG_WARN__DUPLICATE_METHOD_MATCH" = "YES";
+				"GCC_DYNAMIC_NO_PIC" = "NO";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf";
+				"GCC_WARN_UNDECLARED_SELECTOR" = "YES";
+				"CLANG_ANALYZER_NONNULL" = "YES";
+				"CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION" = "YES_AGGRESSIVE";
+				"CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER" = "YES";
+				"CLANG_ENABLE_OBJC_WEAK" = "YES";
+				"CLANG_WARN_STRICT_PROTOTYPES" = "YES";
+				"GCC_OPTIMIZATION_LEVEL" = "0";
+				"ENABLE_USER_SCRIPT_SANDBOXING" = "YES";
+				"GCC_WARN_ABOUT_RETURN_TYPE" = "YES_ERROR";
+				"GCC_WARN_UNUSED_FUNCTION" = "YES";
+				"CLANG_WARN_UNREACHABLE_CODE" = "YES";
+				"CLANG_WARN_NON_LITERAL_NULL_CONVERSION" = "YES";
+				"GCC_PREPROCESSOR_DEFINITIONS" = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 27.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				"CLANG_WARN_OBJC_LITERAL_CONVERSION" = "YES";
 			};
-			name = Debug;
+			"name" = "Debug";
 		};
-		692BC0C030704E8A0018FE1C /* Release configuration for PBXProject "Adapta-PE-Lite" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = X8D8PPM8D7;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 27.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
-				SWIFT_COMPILATION_MODE = wholemodule;
+		"69C8218A305E06A700AABE63" = {
+			"path" = "Adapta-PE-LiteUITests.xctest";
+			"isa" = "PBXFileReference";
+			"includeInIndex" = "0";
+			"explicitFileType" = "wrapper.cfbundle";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"69C82187305E06A700AABE63" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"files" = (
+			);
+		};
+		"69C82196305E06A700AABE63" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"CURRENT_PROJECT_VERSION" = "1";
+				"BUNDLE_LOADER" = "$(TEST_HOST)";
+				"DEVELOPMENT_TEAM" = "X8D8PPM8D7";
+				"MARKETING_VERSION" = "1.0";
+				"TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/Adapta-PE-Lite.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Adapta-PE-Lite";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"STRING_CATALOG_GENERATE_SYMBOLS" = "NO";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"SWIFT_EMIT_LOC_STRINGS" = "NO";
+				"SWIFT_VERSION" = "5.0";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY" = "YES";
+				"SWIFT_APPROACHABLE_CONCURRENCY" = "YES";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.thealejo.Adapta-PE-LiteTests";
 			};
-			name = Release;
+			"name" = "Debug";
 		};
-		692BC0C230704E8A0018FE1C /* Debug configuration for PBXNativeTarget "Adapta-PE-Lite" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X8D8PPM8D7;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
+		"69C82191305E06A700AABE63" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"CLANG_WARN_UNGUARDED_AVAILABILITY" = "YES_AGGRESSIVE";
+				"ENABLE_NS_ASSERTIONS" = "NO";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"CLANG_ENABLE_OBJC_ARC" = "YES";
+				"CLANG_WARN_DIRECT_OBJC_ISA_USAGE" = "YES_ERROR";
+				"CLANG_WARN__DUPLICATE_METHOD_MATCH" = "YES";
+				"CLANG_WARN_SUSPICIOUS_MOVE" = "YES";
+				"CLANG_ENABLE_OBJC_WEAK" = "YES";
+				"CLANG_WARN_INFINITE_RECURSION" = "YES";
+				"SWIFT_COMPILATION_MODE" = "wholemodule";
+				"CLANG_WARN_OBJC_LITERAL_CONVERSION" = "YES";
+				"DEVELOPMENT_TEAM" = "X8D8PPM8D7";
+				"CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION" = "YES_AGGRESSIVE";
+				"SDKROOT" = "macosx";
+				"CLANG_CXX_LANGUAGE_STANDARD" = "gnu++20";
+				"LOCALIZATION_PREFERS_STRING_CATALOGS" = "YES";
+				"CLANG_WARN_BOOL_CONVERSION" = "YES";
+				"CLANG_WARN_UNREACHABLE_CODE" = "YES";
+				"CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF" = "YES";
+				"ENABLE_STRICT_OBJC_MSGSEND" = "YES";
+				"CLANG_ANALYZER_NONNULL" = "YES";
+				"CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING" = "YES";
+				"CLANG_WARN_STRICT_PROTOTYPES" = "YES";
+				"CLANG_WARN_ENUM_CONVERSION" = "YES";
+				"GCC_WARN_64_TO_32_BIT_CONVERSION" = "YES";
+				"CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER" = "YES";
+				"GCC_WARN_UNINITIALIZED_AUTOS" = "YES_AGGRESSIVE";
+				"ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS" = "YES";
+				"GCC_WARN_ABOUT_RETURN_TYPE" = "YES_ERROR";
+				"CLANG_WARN_EMPTY_BODY" = "YES";
+				"CLANG_WARN_COMMA" = "YES";
+				"GCC_WARN_UNUSED_VARIABLE" = "YES";
+				"GCC_C_LANGUAGE_STANDARD" = "gnu17";
+				"CLANG_WARN_RANGE_LOOP_ANALYSIS" = "YES";
+				"CLANG_ENABLE_MODULES" = "YES";
+				"CLANG_WARN_INT_CONVERSION" = "YES";
+				"ALWAYS_SEARCH_USER_PATHS" = "NO";
+				"CLANG_WARN_OBJC_ROOT_CLASS" = "YES_ERROR";
+				"CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS" = "YES";
+				"COPY_PHASE_STRIP" = "NO";
+				"CLANG_WARN_CONSTANT_CONVERSION" = "YES";
+				"ENABLE_USER_SCRIPT_SANDBOXING" = "YES";
+				"GCC_NO_COMMON_BLOCKS" = "YES";
+				"MTL_ENABLE_DEBUG_INFO" = "NO";
+				"CLANG_WARN_NON_LITERAL_NULL_CONVERSION" = "YES";
+				"MTL_FAST_MATH" = "YES";
+				"GCC_WARN_UNUSED_FUNCTION" = "YES";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym";
+				"CLANG_WARN_DOCUMENTATION_COMMENTS" = "YES";
+				"GCC_WARN_UNDECLARED_SELECTOR" = "YES";
+			};
+			"name" = "Release";
+		};
+		"69C82172305E06A700AABE63" = {
+			"productType" = "com.apple.product-type.application";
+			"productReference" = "69C82173305E06A700AABE63";
+			"buildConfigurationList" = "69C82192305E06A700AABE63";
+			"productName" = "Adapta-PE-Lite";
+			"isa" = "PBXNativeTarget";
+			"fileSystemSynchronizedGroups" = (
+				"69C82175305E06A700AABE63",
+			);
+			"buildPhases" = (
+				"69C8216F305E06A700AABE63",
+				"69C82170305E06A700AABE63",
+				"69C82171305E06A700AABE63",
+			);
+			"name" = "Adapta-PE-Lite";
+			"buildRules" = (
+			);
+		};
+		"69C8218B305E06A700AABE63" = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "69C8216B305E06A700AABE63";
+			"remoteGlobalIDString" = "69C82172305E06A700AABE63";
+			"remoteInfo" = "Adapta-PE-Lite";
+			"proxyType" = "1";
+		};
+		"69C8219A305E06A700AABE63" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.thealejo.Adapta-PE-LiteUITests";
+				"DEVELOPMENT_TEAM" = "X8D8PPM8D7";
+				"MARKETING_VERSION" = "1.0";
+				"TEST_TARGET_NAME" = "Adapta-PE-Lite";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"STRING_CATALOG_GENERATE_SYMBOLS" = "NO";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"SWIFT_EMIT_LOC_STRINGS" = "NO";
+				"SWIFT_VERSION" = "5.0";
+				"SWIFT_APPROACHABLE_CONCURRENCY" = "YES";
+				"SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY" = "YES";
+				"CURRENT_PROJECT_VERSION" = "1";
+			};
+			"name" = "Release";
+		};
+		"69C82197305E06A700AABE63" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"CURRENT_PROJECT_VERSION" = "1";
+				"BUNDLE_LOADER" = "$(TEST_HOST)";
+				"DEVELOPMENT_TEAM" = "X8D8PPM8D7";
+				"MARKETING_VERSION" = "1.0";
+				"TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/Adapta-PE-Lite.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Adapta-PE-Lite";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"STRING_CATALOG_GENERATE_SYMBOLS" = "NO";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"SWIFT_EMIT_LOC_STRINGS" = "NO";
+				"SWIFT_VERSION" = "5.0";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY" = "YES";
+				"SWIFT_APPROACHABLE_CONCURRENCY" = "YES";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.thealejo.Adapta-PE-LiteTests";
+			};
+			"name" = "Release";
+		};
+		"69C82173305E06A700AABE63" = {
+			"path" = "Adapta-PE-Lite.app";
+			"isa" = "PBXFileReference";
+			"includeInIndex" = "0";
+			"explicitFileType" = "wrapper.application";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"69C82182305E06A700AABE63" = {
+			"isa" = "PBXTargetDependency";
+			"target" = "69C82172305E06A700AABE63";
+			"targetProxy" = "69C82181305E06A700AABE63";
+		};
+		"69C8217C305E06A700AABE63" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"files" = (
+			);
+		};
+		"69C82188305E06A700AABE63" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"files" = (
+			);
+		};
+		"69C82192305E06A700AABE63" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"69C82193305E06A700AABE63",
+				"69C82194305E06A700AABE63",
+			);
+			"defaultConfigurationName" = "Release";
+		};
+		"69C82183305E06A700AABE63" = {
+			"isa" = "PBXFileSystemSynchronizedRootGroup";
+			"path" = "Adapta-PE-LiteTests";
+			"sourceTree" = "<group>";
+		};
+		"69C8217D305E06A700AABE63" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"files" = (
+			);
+		};
+		"69C8218C305E06A700AABE63" = {
+			"isa" = "PBXTargetDependency";
+			"target" = "69C82172305E06A700AABE63";
+			"targetProxy" = "69C8218B305E06A700AABE63";
+		};
+		"69C82189305E06A700AABE63" = {
+			"buildRules" = (
+			);
+			"buildConfigurationList" = "69C82198305E06A700AABE63";
+			"productReference" = "69C8218A305E06A700AABE63";
+			"productType" = "com.apple.product-type.bundle.ui-testing";
+			"productName" = "Adapta-PE-LiteUITests";
+			"isa" = "PBXNativeTarget";
+			"fileSystemSynchronizedGroups" = (
+				"69C8218D305E06A700AABE63",
+			);
+			"dependencies" = (
+				"69C8218C305E06A700AABE63",
+			);
+			"buildPhases" = (
+				"69C82186305E06A700AABE63",
+				"69C82187305E06A700AABE63",
+				"69C82188305E06A700AABE63",
+			);
+			"name" = "Adapta-PE-LiteUITests";
+		};
+		"69C82198305E06A700AABE63" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"69C82199305E06A700AABE63",
+				"69C8219A305E06A700AABE63",
+			);
+			"defaultConfigurationName" = "Release";
+		};
+		"69C82193305E06A700AABE63" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"ENABLE_RESOURCE_ACCESS_AUDIO_INPUT" = "YES";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.thealejo.Adapta-PE-Lite";
+				"RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES" = "NO";
+				"MARKETING_VERSION" = "1.0";
+				"ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY" = "NO";
+				"SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY" = "YES";
+				"INFOPLIST_KEY_NSAppleEventsUsageDescription" = "Adapta PE Lite necesita automatización para controlar pestañas y ventanas por voz.";
+				"RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION" = "NO";
+				"REGISTER_APP_GROUPS" = "YES";
+				"ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS" = "YES";
+				"ENABLE_RESOURCE_ACCESS_CALENDARS" = "NO";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"AUTOMATION_APPLE_EVENTS" = "YES";
+				"STRING_CATALOG_GENERATE_SYMBOLS" = "YES";
+				"SWIFT_DEFAULT_ACTOR_ISOLATION" = "nonisolated";
+				"SWIFT_VERSION" = "5.0";
+				"SWIFT_APPROACHABLE_CONCURRENCY" = "YES";
+				"RUNTIME_EXCEPTION_DEBUGGING_TOOL" = "NO";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION" = "NO";
+				"ENABLE_PREVIEWS" = "YES";
+				"ENABLE_RESOURCE_ACCESS_LOCATION" = "NO";
+				"LD_RUNPATH_SEARCH_PATHS" = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thealejo.Adapta-PE-Lite";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				"ENABLE_APP_SANDBOX" = "NO";
+				"ENABLE_RESOURCE_ACCESS_CAMERA" = "NO";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"INFOPLIST_KEY_LSApplicationCategoryType" = "public.app-category.productivity";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"INFOPLIST_KEY_NSMicrophoneUsageDescription" = "Adapta PE Lite procesará tu voz localmente.";
+				"INFOPLIST_KEY_NSSpeechRecognitionUsageDescription" = "Adapta PE Lite procesará tu voz localmente.";
+				"ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME" = "AccentColor";
+				"RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY" = "NO";
+				"COMBINE_HIDPI_IMAGES" = "YES";
+				"INFOPLIST_KEY_CFBundleDisplayName" = "Adapta PE Lite";
+				"ENABLE_RESOURCE_ACCESS_CONTACTS" = "NO";
+				"RUNTIME_EXCEPTION_ALLOW_JIT" = "NO";
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"INFOPLIST_KEY_NSHumanReadableCopyright" = "";
+				"DEVELOPMENT_TEAM" = "X8D8PPM8D7";
 			};
-			name = Debug;
+			"name" = "Debug";
 		};
-		692BC0C330704E8A0018FE1C /* Release configuration for PBXNativeTarget "Adapta-PE-Lite" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X8D8PPM8D7;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thealejo.Adapta-PE-Lite";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		692BC0C530704E8A0018FE1C /* Debug configuration for PBXNativeTarget "Adapta-PE-LiteTests" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X8D8PPM8D7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 27.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thealejo.Adapta-PE-LiteTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Adapta-PE-Lite.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Adapta-PE-Lite";
-			};
-			name = Debug;
-		};
-		692BC0C630704E8A0018FE1C /* Release configuration for PBXNativeTarget "Adapta-PE-LiteTests" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X8D8PPM8D7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 27.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thealejo.Adapta-PE-LiteTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Adapta-PE-Lite.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Adapta-PE-Lite";
-			};
-			name = Release;
-		};
-		692BC0C830704E8A0018FE1C /* Debug configuration for PBXNativeTarget "Adapta-PE-LiteUITests" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X8D8PPM8D7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thealejo.Adapta-PE-LiteUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "Adapta-PE-Lite";
-			};
-			name = Debug;
-		};
-		692BC0C930704E8A0018FE1C /* Release configuration for PBXNativeTarget "Adapta-PE-LiteUITests" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X8D8PPM8D7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thealejo.Adapta-PE-LiteUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "Adapta-PE-Lite";
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		692BC09D30704E890018FE1C /* Build configuration list for PBXProject "Adapta-PE-Lite" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				692BC0BF30704E8A0018FE1C /* Debug configuration for PBXProject "Adapta-PE-Lite" */,
-				692BC0C030704E8A0018FE1C /* Release configuration for PBXProject "Adapta-PE-Lite" */,
+		"69C82174305E06A700AABE63" = {
+			"isa" = "PBXGroup";
+			"name" = "Products";
+			"children" = (
+				"69C82173305E06A700AABE63",
+				"69C82180305E06A700AABE63",
+				"69C8218A305E06A700AABE63",
 			);
-			defaultConfigurationName = Release;
+			"sourceTree" = "<group>";
 		};
-		692BC0C130704E8A0018FE1C /* Build configuration list for PBXNativeTarget "Adapta-PE-Lite" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				692BC0C230704E8A0018FE1C /* Debug configuration for PBXNativeTarget "Adapta-PE-Lite" */,
-				692BC0C330704E8A0018FE1C /* Release configuration for PBXNativeTarget "Adapta-PE-Lite" */,
+		"69C8218D305E06A700AABE63" = {
+			"isa" = "PBXFileSystemSynchronizedRootGroup";
+			"path" = "Adapta-PE-LiteUITests";
+			"sourceTree" = "<group>";
+		};
+		"69C8216E305E06A700AABE63" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"69C82190305E06A700AABE63",
+				"69C82191305E06A700AABE63",
 			);
-			defaultConfigurationName = Release;
+			"defaultConfigurationName" = "Release";
 		};
-		692BC0C430704E8A0018FE1C /* Build configuration list for PBXNativeTarget "Adapta-PE-LiteTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				692BC0C530704E8A0018FE1C /* Debug configuration for PBXNativeTarget "Adapta-PE-LiteTests" */,
-				692BC0C630704E8A0018FE1C /* Release configuration for PBXNativeTarget "Adapta-PE-LiteTests" */,
-			);
-			defaultConfigurationName = Release;
+		"69C82175305E06A700AABE63" = {
+			"path" = "Adapta-PE-Lite";
+			"isa" = "PBXFileSystemSynchronizedRootGroup";
+			"sourceTree" = "<group>";
 		};
-		692BC0C730704E8A0018FE1C /* Build configuration list for PBXNativeTarget "Adapta-PE-LiteUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				692BC0C830704E8A0018FE1C /* Debug configuration for PBXNativeTarget "Adapta-PE-LiteUITests" */,
-				692BC0C930704E8A0018FE1C /* Release configuration for PBXNativeTarget "Adapta-PE-LiteUITests" */,
-			);
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
 	};
-	rootObject = 692BC09A30704E890018FE1C /* Project object */;
-	validationLevel = 1;
+	"rootObject" = "69C8216B305E06A700AABE63";
 }

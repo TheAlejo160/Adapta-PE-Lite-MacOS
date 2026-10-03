@@ -1,0 +1,47 @@
+# Estado personal de Xcode; conservar proyectos, esquemas compartidos y assets
+xcuserdata/
+*.xcuserstate
+*.hmap
+DerivedData/
+.build/
+build/
+.swiftpm/
+*.xcarchive
+*.xcresult
+*.dSYM
+*.dSYM.zip
+
+# Productos e instaladores generados localmente
+*.app/
+*.dmg
+*.pkg
+*.ipa
+*.zip
+Carthage/Build/
+
+# Sistema, editores y memoria local de herramientas
+.DS_Store
+.AppleDouble
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+.codex/
+.codebase-memory/
+*.swp
+*.swo
+*~
+
+# Configuración privada, credenciales y registros
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.p12
+*.pfx
+*.key
+*.pem
+*.log
+
+# Las pruebas y documentación sí forman parte del código público.
