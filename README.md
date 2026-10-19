@@ -1,95 +1,27 @@
-<p align="center"><img src="Adapta-PE-Lite/Assets.xcassets/LiteLogo.imageset/AdaptaPELite.png" alt="Adapta PE Lite" width="128"></p>
-
 # Adapta PE Lite para macOS
 
-## Comandos naturales: bloque del 17 de octubre de 2026
+![Logo de Adapta PE Lite](Adapta-PE-Lite/Assets.xcassets/LiteLogo.imageset/AdaptaPELite.png)
 
-La palabra predeterminada admite «Computadora», «Computadoras» y «Computador». Una llamada seguida sólo de cortesía mantiene la espera de ocho segundos. Las palabras personales siguen siendo independientes: elegir «Asistente» no activa esos alias. Se conserva el texto original tras la llamada, incluidos espacios interiores y Unicode; las pruebas de texto no acreditan reconocimiento con micrófono.
+**Control por voz, siete filtros de color y una mascota opcional, en una app nativa para Mac.** Lite está pensada para quien necesita abrir aplicaciones, dictar, activar controles y pedir lecturas sin usar cámara. También es la opción a considerar en Macs modestos si no necesitas seguimiento corporal: no carga motores de visión. El consumo real depende del reconocimiento de voz, las pantallas y los filtros activos; no hay una medición de rendimiento universal.
 
-El parser acepta cortesía y variantes españolas como «por favor abre Safari», «quiero que abras Safari», «ábrame Safari» y «abrí Safari». Conserva mayúsculas, acentos y espacios interiores del dictado. La selección literal y las consultas a la API conservan su puntuación. Se mantienen los atajos nativos existentes.
+Es una aplicación SwiftUI independiente, con sus propias fuentes, recursos, proyecto Xcode y pruebas. No necesitas instalar Base. Incluye lectura solicitada por voz y clic por voz; no incluye cámara, cursor cinético, TalkBack automático ni IA externa.
 
-Las partículas finales ambiguas «pe», «pues», «ya pe» y «ya pues» sólo se retiran si llevan una coma antes. Así «busca Adapta PE» y «busca qué significa pues» conservan su contenido. «Abre Safari, pe» se prepara como «abre Safari». Es una diferencia conservadora respecto a la extensión de referencia; no se adivina si una palabra final pertenece a un nombre o consulta.
+[Instalar desde el repo](#instalar-desde-el-repositorio) · [Permisos](#permisos-que-pide-lite) · [Primer uso](#tu-primera-orden) · [Tutoriales](#trabajar-con-la-voz) · [Problemas](#solución-de-problemas) · [Desarrollo](#desarrollo-y-pruebas)
 
-Este bloque porta reglas de texto españolas. No añade reconocimiento acústico en seis idiomas ni acredita precisión con micrófonos reales.
+## Instalar desde el repositorio
 
-Lite conserva voz, lectura manual, filtros y mascotas. No se incorporan cámara, cinética, TalkBack automático ni IA en este bloque.
+### Qué necesitas
 
-**Voz y filtros de pantalla en una aplicación independiente para macOS.** Adapta PE Lite permite controlar aplicaciones, dictar, navegar y leer contenido accesible mediante órdenes en español. Incluye siete simulaciones de daltonismo, barra de menú y panel flotante. Conserva la identidad visual de Adapta PE con su logo Lite.
+- Un Mac con **macOS 14 o posterior**, el mínimo declarado en el proyecto.
+- Xcode completo con un SDK que incluya las APIs de macOS 26 usadas en la interfaz, y soporte para grupos de archivos sincronizados. Las revisiones anteriores del repo documentan uso de Xcode 27. Tener macOS 14 como destino mínimo no significa que cualquier Xcode antiguo pueda compilar las fuentes actuales.
+- Git, un micrófono para las órdenes habladas y un equipo de firma disponible en Xcode.
+- Reconocimiento español de Apple disponible en el dispositivo, o autorización voluntaria para usar su reconocimiento por red. La app busca modelos locales `es-PE`, `es-ES` y `es-MX`.
 
-Este repositorio contiene una app completa con sus propias fuentes, assets, proyecto Xcode y pruebas. No necesita el código ni la instalación de Base. No incluye cámara, cursor cinético, TalkBack automático ni IA externa. La lectura solicitada por voz sí pertenece al asistente Lite.
+El proyecto no fija `ARCHS` ni `EXCLUDED_ARCHS`: utiliza las arquitecturas predeterminadas de Xcode. Puedes trabajar con el destino **My Mac** en Intel o Apple Silicon, pero compilar para tu Mac no demuestra que hayas generado o probado un binario universal.
 
-[Instalación](#instalación-desde-terminal) · [Uso](#primer-inicio-y-uso) · [Comandos](#comandos-de-voz) · [Código](#documentación-del-código) · [Pruebas](#compilación-y-pruebas) · [Guía detallada](docs/LITE.md)
+No requiere Python, Flask, npm ni paquetes de terceros. La documentación de este repo describe instalación desde fuentes; no acredita un paquete DMG publicado, firmado y notarizado.
 
-## Mascotas y mejoras compartidas · 11 de octubre de 2026
-
-Se contrastaron las extensiones completas 13.0 y Lite 3.0, sus README y los motores actuales. Las mejoras se adaptan a las APIs del escritorio; cada edición conserva sus funciones.
-
-En **Mascota**, elige **Tinku** (gallito), **Cuchu** (cuy), **Yati** (llama) o **Sin mascota**, que es el valor inicial. Sólo se decodifica el atlas elegido. Los cuadros nativos de 96×112 conservan transparencia, secuencias de entrada/salida y duración de los sprites originales. Un temporizador sigue la duración de los cuadros; otro se programa una sola vez para el descanso. No se repinta toda la interfaz. La animación se detiene al dormir, con movimiento reducido y durante suspensión. Ocultar/cambiar libera el atlas anterior.
-
-La mascota mira hacia el cursor cercano, acompaña la llamada al asistente y cambia entre hablar y leer durante la salida de voz real. **Saludar**, **Dormir** y **Despertar** permiten controlar su estado; dormir se mantiene hasta despertar. El dibujo deja pasar los clics. Arrastra su nombre entre pantallas o pulsa **Mover con teclas**, usa las flechas y vuelve con **Escape**. **Otro monitor** cambia la pantalla sin arrastrar; se recuerdan mascota, monitor y posición relativa.
-
-### Interfaz, panel y compañía
-
-Las funciones principales quedan en secciones con nombres directos. **Usar panel** abre PiP; **Opciones** permite elegir mascota, filtros, esquina y monitor. Los dispositivos y preferencias de reconocimiento permanecen bajo sus opciones avanzadas. Lite mantiene voz, filtros y lectura manual por orden; no añade cámara, cursor, TalkBack automático ni IA. **Detener todo** permanece accesible.
-
-Activa **Mover mascota y panel juntos** para situar la mascota arriba de PiP. Arrastra el título del panel o el nombre de la mascota para mover ambos. Al separarlos, la mascota recupera su posición propia. Se recuerdan unión, monitor y posición relativa del panel; cambiar de esquina vuelve al anclaje. El tamaño se limita al área útil reservando lugar para la mascota. En macOS también puedes enfocar el título y usar las flechas. PiP conserva fondo sólido para leer incluso cuando está inactivo. El control Ajustes usa Liquid Glass desde macOS 26; versiones anteriores y transparencia reducida usan el estilo nativo sencillo.
-
-La llamada por voz usa el teléfono una vez; ejecutar una orden usa la laptop una vez. Leer y hablar acompañan únicamente la salida de voz real. Después vuelve a reposo, sin dejar teléfono/laptop trabajando indefinidamente. Tras **90 segundos sin interacción**, descansa y detiene su animación. La próxima acción despierta el descanso automático; **Dormir** manual exige **Despertar**. No duerme automáticamente durante una lectura o respuesta hablada.
-
-Di **«computadora, une mascota al panel»**, **«separa mascota del panel»** o **«panel esquina superior izquierda»**. También se admite **«mueve el panel a la esquina inferior derecha»**. Cambiar posición usa los mismos límites que el arrastre y conserva el control disponible.
-
-Después de llamar al asistente, admite **«mascota Cu Chu»**, **«mascota Tinku»**, **«mascota Yaty»**, **«elige mascota tiiinku»**, **«oculta mascota»**, **«saluda mascota»**, **«duerme mascota»** y **«despierta mascota»**. Las órdenes se reconocen completas; mencionar una mascota dentro de dictado o búsqueda conserva ese texto.
-
-**Lite continúa independiente:** voz, lectura manual solicitada, siete filtros y mascota. No se añaden cámara, cursor cinético, TalkBack automático ni IA.
-
-### Pantalla completa y varios monitores
-
-Los filtros usan una captura/composición local por pantalla. Se reconstruyen al conectar o retirar monitores y al cambiar su disposición. Las capas y mascotas se unen a Spaces y a otras apps en pantalla completa mediante [canJoinAllApplications](https://developer.apple.com/documentation/appkit/nswindow/collectionbehavior-swift.struct/canjoinallapplications); el filtro queda debajo de los controles propios de Adapta PE, evita capturarse a sí mismo y deja pasar los clics. **Preparando**, **Activo** y los errores explican el estado real.
-
-La captura requiere el permiso de Grabación de pantalla. Contenido protegido, escritorio seguro o juegos que usen presentación exclusiva pueden impedir captura/capas; usa pantalla completa de escritorio cuando la app lo permita. La lectura requiere controles AX publicados y la entrada puede ser rechazada por cada juego. No se promete acceso a superficies que el sistema protege. La composición por monitor tiene coste de GPU/memoria; 30 FPS es el límite solicitado, no una medición garantizada.
-
-### Código y comprobación
-
-- [`Mascot.swift`](Adapta-PE-Lite/Mascot.swift): atlas/secuencias, comandos, ventanas, voz y controles SwiftUI.
-- [`Mascotas/`](Adapta-PE-Lite/Mascotas/): sprites y manifiestos locales.
-
-Compilación Debug y 3 pruebas de lógica aprobadas con Xcode 27, sin activar sensores. Se comprobaron selección y controles de mascotas en la interfaz real. Micrófono, filtros activos, juegos exclusivos, monitor externo y consumo/FPS en equipo real requieren validación física. No se regeneró una distribución firmada/notarizada.
-
-## Funciones
-
-| Función | Comportamiento actual |
-| --- | --- |
-| Asistente de voz | Palabra personalizable, señal de escucha, ventana de ocho segundos, dictado Unicode y respuestas habladas. |
-| Aplicaciones y navegador | Abrir, enfocar o cerrar apps, abrir sitios, buscar, manejar pestañas y ejecutar atajos conocidos. |
-| Accesibilidad | Enumerar menús/campos, enfocar, seleccionar, escribir, activar controles y leer bajo una orden explícita. |
-| Filtros | Protanomalía, protanopía, deuteranomalía, deuteranopía, tritanomalía, tritanopía y acromatopsia. |
-| Mascota opcional | Tinku, Cuchu o Yati; voz, estados, movimiento entre pantallas y teclado. |
-| Segundo plano | Cerrar ajustes mantiene la asistencia; barra de menú y panel flotante permiten controlarla. |
-| Preferencias | Micrófono, palabra de activación, opción de reconocimiento Apple por red, filtro, monitor/esquina del panel e inicio de sesión voluntario. |
-
-Las matrices son simulaciones visuales; no constituyen una corrección médica. Las acciones dependen de los controles accesibles que publique cada app. La lectura manual no sustituye a VoiceOver.
-
-## Requisitos
-
-- macOS **14 o posterior**, según `MACOSX_DEPLOYMENT_TARGET` del proyecto.
-- Xcode compatible con el formato del proyecto y grupos sincronizados. Esta revisión se compiló con **Xcode 27**.
-- Git para clonar; micrófono para voz y los permisos de cada módulo.
-- Un reconocedor español de Apple disponible localmente. La app comprueba `es-PE`, `es-ES` y `es-MX`; no presupone que cada equipo tenga todos los modelos.
-
-No utiliza Python, Flask, paquetes de terceros ni dependencias de Base. El código usa SwiftUI, AppKit, AVFoundation, Speech, Accessibility, CoreGraphics, ScreenCaptureKit y ServiceManagement. Los permisos y disponibilidad de reconocimiento se comprueban al activar cada función.
-
-El proyecto conserva el equipo de firma del autor. Si vas a firmar, selecciona tu propio equipo en **Signing & Capabilities**. El deployment target y una compilación correcta no acreditan pruebas físicas en todas las versiones de macOS ni en ambas arquitecturas.
-
-## Instalación desde terminal
-
-Instala Xcode, ábrelo para completar sus componentes y selecciona sus herramientas si todavía no están activas:
-
-```sh
-sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
-xcodebuild -version
-```
-
-Clona esta app:
+### Abrir y ejecutar en Xcode
 
 ```sh
 git clone https://github.com/TheAlejo160/Adapta-PE-Lite-MacOS.git
@@ -97,15 +29,29 @@ cd Adapta-PE-Lite-MacOS
 open Adapta-PE-Lite.xcodeproj
 ```
 
-En Xcode, selecciona el esquema **Adapta-PE-Lite**, destino **My Mac** y tu firma de desarrollo. Para compilar y abrir desde terminal:
+1. Abre Xcode al menos una vez para completar sus componentes.
+2. Selecciona el esquema **Adapta-PE-Lite** y el destino **My Mac**.
+3. En el target **Adapta-PE-Lite > Signing & Capabilities**, cambia el equipo del autor por tu propio **Team**. Revisa también los targets de pruebas si vas a ejecutarlos. El proyecto usa firma automática.
+4. Ejecuta **Product > Run**. La primera apertura deja voz y filtros apagados.
+
+Si Terminal está usando sólo Command Line Tools, selecciona el Xcode completo instalado en esta ruta:
+
+```sh
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+xcodebuild -version
+```
+
+Con la firma configurada también puedes ejecutar:
 
 ```sh
 ./script/build_and_run.sh --verify
 ```
 
-El script detiene la instancia anterior de Lite y compila Debug en una carpeta temporal. `--verify` comprueba que el proceso arranca; no prueba micrófono ni filtros. Sin argumentos compila y abre; `--debug` abre Xcode; `--logs` y `--telemetry` muestran registros locales.
+El script cierra la instancia anterior de Lite, compila Debug en una carpeta temporal y abre la app. `--verify` sólo comprueba que el proceso arranca. Sin argumentos compila y abre; `--debug` también compila antes de abrir el proyecto en Xcode. `--logs` muestra registros del proceso y `--telemetry` los del subsistema local `pe.adapta.desktop`.
 
-Para una instalación local persistente, sal de Lite desde la barra de menú, compila Release con tu firma configurada y copia el bundle:
+### Dejar una copia en Aplicaciones
+
+Sal de Lite antes de sustituir su bundle. Desde la raíz del repo, con tu firma ya configurada:
 
 ```sh
 xcodebuild -project Adapta-PE-Lite.xcodeproj -scheme Adapta-PE-Lite \
@@ -116,139 +62,172 @@ ditto build/lite/Build/Products/Release/Adapta-PE-Lite.app \
 open "$HOME/Applications/Adapta-PE-Lite.app"
 ```
 
-Para actualizar, ejecuta `git pull --ff-only` con tu copia limpia, cierra Lite y repite compilación/copia. La instalación local no acredita firma y notarización para distribuir a otros equipos. Este repositorio publica fuentes; no promete un DMG ni una release binaria.
+Esta instalación local no acredita firma Developer ID ni notarización para distribuir la app a otras personas. Usa una ubicación estable para la copia que autorizas en los permisos de macOS.
 
-Para desinstalar, desactiva **Iniciar con macOS**, pulsa **Salir de Adapta PE Lite** y retira el bundle de `~/Applications`. Los permisos y preferencias del usuario no se eliminan al borrar la app.
+Para actualizar una copia de trabajo limpia, ejecuta `git pull --ff-only`, cierra Lite y repite la compilación y copia. Para desinstalar, desmarca **Iniciar al encender el Mac**, elige **Salir de Adapta PE Lite** en la barra de menú y retira la app de `~/Applications`. Borrarla no elimina sus preferencias ni los permisos registrados por macOS.
 
-## Primer inicio y uso
+## Permisos que pide Lite
 
-1. El primer inicio mantiene voz y filtro apagados. Abre la sección **Voz**, elige micrófono y activa el asistente.
-2. Autoriza micrófono y reconocimiento de voz. Concede **Accesibilidad** para operar otras apps desde **Ajustes del Sistema > Privacidad y seguridad**.
-3. Di **«Computadora»**, espera la señal y pronuncia una orden antes de ocho segundos; también puedes decir palabra y orden en una misma frase.
-4. Usa **Daltonismo** para seleccionar un filtro. La captura de pantalla se solicita al activarlo. **Sin filtro** detiene la composición.
-5. Cierra ajustes para continuar en segundo plano. La barra de menú abre ajustes, cambia filtros, activa/apaga voz, muestra el panel o detiene todo.
+Abre **Ajustes del Sistema > Privacidad y seguridad**. Los permisos son de **Adapta PE Lite**, separados de los de Base por su identificador `com.thealejo.Adapta-PE-Lite`.
 
-El panel muestra estado, transcripción temporal, respuesta y elecciones sin convertirse en el destino de la orden. Puedes anclarlo a una esquina y monitor. Las coincidencias ambiguas ofrecen opciones numeradas; **«cancelar»** retira la selección pendiente.
-
-**Detener todo** cancela acciones, escucha y TTS, retira filtros y recuerda que los módulos están apagados. **Salir** libera recursos y conserva las preferencias para el siguiente inicio. El reposo suspende los módulos y el retorno revalida capacidades; restaurar una sesión no abre permisos nuevos.
-
-Si usas Base al mismo tiempo, activa voz y filtros en una sola edición para evitar que ambas operen sobre el mismo escritorio.
-
-## Comandos de voz
-
-Los ejemplos se pronuncian después de «Computadora». No son lenguaje libre ilimitado: `CommandParser.swift` contiene las intenciones y sinónimos admitidos.
-
-| Objetivo | Ejemplos |
+| Permiso | Cuándo y para qué |
 | --- | --- |
-| Apps y sitios | «abre Safari», «abre Google», «cierra Safari». |
-| Buscar | «busca accesibilidad en Wikipedia», «busca recetas en nueva pestaña». |
-| Dictar | «escribe Hola, ¿cómo estás?», «escribe Ana en el campo Nombre». |
-| Controles | «muestra campos», «enfoca Buscar», «selecciona Aceptar», «dale clic». |
-| Menús | «muestra acciones», «ejecuta la acción Guardar». |
-| Teclado | «guardar», «copiar», «pegar», «atajo comando shift s». |
-| Navegación | «nueva pestaña», «cierra pestaña», «atrás», «recarga», «baja», «aumenta zoom». |
-| Lectura manual | «lee la pantalla», «lee Guardar», «silencio». |
-| Elecciones | «elige dos», «cancelar». |
-| Interfaz | «mostrar ajustes», «modo flotante», «detener todo». |
+| Micrófono | Al encender **Asistente de voz**; captura audio mientras permanece activo. |
+| Reconocimiento de voz | Al encender el asistente; convierte audio en texto mediante Speech de Apple. Concederlo no activa por sí solo la opción de red de Lite. |
+| Accesibilidad | Al pulsar **Permitir control del escritorio**; permite escribir, leer y activar controles de otras apps, enviar atajos y hacer clic. |
+| Grabación de pantalla | Al activar un filtro; ScreenCaptureKit necesita capturar las pantallas para componer el color. En algunas versiones aparece como **Grabación de pantalla y audio del sistema**; el filtro no captura audio. |
+| Automatización | Cuando una orden del navegador usa Apple Events. Autoriza el navegador solicitado dentro de la entrada de Lite. |
 
-La normalización de intenciones no borra Unicode, signos ni mayúsculas del dictado. Las URLs y consultas se construyen desde el catálogo. Una orden no se ejecuta como shell. Los controles protegidos se excluyen de lectura y escritura. Si una app no expone un campo o menú por Accesibilidad, el asistente informa la limitación; puede usarse un atajo conocido cuando proceda.
+**Lite no pide cámara.** Puedes usar mascotas sin activar voz ni captura de pantalla. Para usar sólo filtros, no necesitas encender el micrófono. Si macOS pide reiniciar la app después de cambiar un permiso, sal y abre de nuevo la misma copia instalada.
 
-## Permisos y privacidad
+## Tu primera orden
 
-| Permiso | Uso |
+1. En **Asistente de voz**, despliega **Micrófono y preferencias**, selecciona el **Micrófono** y deja desmarcado **Permitir reconocimiento de Apple por red** si quieres reconocimiento local.
+2. Enciende **Asistente de voz** y acepta los avisos de micrófono y reconocimiento. El estado indica si está listo o qué falta.
+3. Pulsa **Permitir control del escritorio** para las acciones sobre otras aplicaciones y habilita Lite en **Accesibilidad**.
+4. Di **«Computadora, abre Safari»**. También puedes decir sólo **«Computadora»**, esperar la señal y dar la orden dentro de ocho segundos.
+5. Revisa **Escuché:** y la respuesta. Pulsa **Usar panel** para conservar ese feedback mientras trabajas en otra app.
+
+En **Nombre para llamar al asistente** puedes cambiar la palabra de activación, por ejemplo a «Máquina Azul». Se comparan acentos y espacios equivalentes. La palabra predeterminada admite «Computadora», «Computadoras» y «Computador»; una palabra personal no hereda esos alias.
+
+Se aceptan variantes como «por favor abre Safari», «quiero que abras Safari», «ábrame Safari» y «abrí Safari». Esto es un catálogo de intenciones y reglas en español, no conversación libre ni reconocimiento acústico en seis idiomas.
+
+## Trabajar con la voz
+
+En los ejemplos siguientes, llama primero al asistente o antepone **«Computadora,»** a la orden. Activa la aplicación sobre la que quieras actuar antes de dictar, leer o pulsar controles.
+
+### Aplicaciones, sitios y navegación
+
+- **«Abre Safari»**, **«abre Zoom»**, **«abre Chrome en nueva ventana»**: resuelve aplicaciones instaladas por nombre o alias. Si no encuentra una coincidencia única, pide el nombre completo.
+- **«Abre YouTube»**, **«abre Google»**, **«abre github.com»**: abre sitios conocidos o direcciones HTTP/HTTPS.
+- **«Busca movilidad en Wikipedia»**, **«busca recetas en nueva pestaña»**: construye la búsqueda para el sitio o destino indicado.
+- **«Nueva pestaña»**, **«cierra pestaña»**, **«atrás»**, **«recarga»**, **«siguiente pestaña»**, **«baja»**, **«aumenta zoom»**: ejecuta acciones y atajos de navegación.
+- **«Abre Safari en el segundo monitor»**: intenta colocar su ventana en una pantalla conectada mediante Accesibilidad.
+- **«Cierra Safari»**: solicita el cierre de la aplicación. Guarda antes tu trabajo; cada app decide cómo tratar documentos pendientes.
+
+Safari, Google Chrome, Brave Browser y Microsoft Edge tienen manejo específico de URLs y pestañas mediante AppleScript. Sin uno de esos navegadores como destino, las URLs se abren con el navegador predeterminado; no se garantiza el mismo control del destino de pestaña o ventana.
+
+El catálogo incluye Google, YouTube, Mercado Libre, Amazon, Wikipedia, Facebook, Instagram, X/Twitter, Reddit, Netflix, Twitch, GitHub, ChatGPT, Claude, Gemini, Canvas, Gmail, Outlook, WhatsApp, Telegram, Drive, Documentos de Google, Mapas, LinkedIn, TikTok, Spotify, Bing y DuckDuckGo. Abrir las webs de ChatGPT, Claude o Gemini no integra IA en Lite. En sitios sin búsqueda propia configurada, la consulta usa Google con el dominio del sitio.
+
+### Dictado, campos y teclado
+
+1. Enfoca un campo de texto no protegido en la app de destino.
+2. Di **«Escribe Hola, José. ¿Cómo estás?»**. El parser conserva mayúsculas, acentos, puntuación y espacios interiores del texto reconocido; el resultado acústico depende de Speech y del micrófono.
+3. Si necesitas localizar el campo, di **«muestra campos»** y elige uno. También puedes decir **«enfoca Buscar»** o **«escribe Ana en el campo Nombre»**, usando la etiqueta real del formulario.
+4. Para trabajar con el texto, prueba **«selecciona el texto Hola»**, **«copiar»**, **«pegar»**, **«deshacer»**, **«guardar»** o **«atajo comando shift s»**.
+
+**«Borra el campo»** selecciona y borra el contenido del campo editable enfocado. Los campos de contraseña quedan excluidos del dictado y del borrado. El dictado envía eventos Unicode y no sustituye el portapapeles.
+
+Las órdenes son completas: mencionar «mascota Cuchu» dentro de un dictado o una búsqueda conserva esas palabras. Las partículas finales ambiguas «pe», «pues», «ya pe» y «ya pues» sólo se retiran como cortesía si van precedidas de coma; «busca Adapta PE» conserva el nombre.
+
+### Elecciones, menús y clic por voz
+
+En **Comandos y ayuda**, los botones **Acciones de la app activa** y **Buscar campos de texto** enumeran opciones. Por voz puedes pedir **«muestra comandos»** o **«muestra campos»**.
+
+Cuando aparecen varias coincidencias, el panel muestra **Elige en…** y una lista numerada. Responde **«elige dos»**, el nombre de la opción, **«siguiente»** para otra página o **«cancelar»**. También puedes pulsar sus botones. La elección caduca a los 45 segundos y se cancela al cambiar de aplicación; antes de ejecutarla se vuelve a comprobar la ventana de destino.
+
+Para un control accesible, usa **«selecciona Aceptar»** y después **«dale clic»**, o directamente **«pulsa Aceptar»**. Para un menú, **«ejecuta la acción Guardar»**. Los nombres deben corresponder a los que publique la app.
+
+**«Clic»** y **«clic derecho»** pulsan en la posición actual del puntero. Lite no mueve el cursor con cámara; coloca el puntero con tu ratón, trackpad u otro dispositivo. Una app puede rechazar eventos o no publicar controles accesibles.
+
+### Lectura explícita y parada
+
+Di **«lee la pantalla»** para leer el texto accesible de la ventana activa, o **«lee Guardar»** para un elemento concreto. La lectura no hace OCR de imágenes y depende del árbol de Accesibilidad; está acotada y no equivale a leer todo un documento largo ni sustituye a VoiceOver.
+
+Durante una lectura, di **«Computadora, silencio»** para interrumpir la voz o **«Computadora, detén todo»** para apagar la asistencia. El botón **Detener todo** y el atajo **Comando + Mayúsculas + punto** también están disponibles. La parada cancela acciones pendientes, escucha y síntesis, quita filtros y recuerda voz y filtros apagados; no cierra la app ni oculta necesariamente la mascota.
+
+## Filtros sin cámara
+
+1. Abre **Filtros de color** y selecciona **Protanomalía**, **Protanopía**, **Deuteranomalía**, **Deuteranopía**, **Tritanomalía**, **Tritanopía** o **Acromatopsia**.
+2. Concede **Grabación de pantalla** si se solicita y vuelve a activar el filtro. El botón **Permiso de Grabación de pantalla** abre su ajuste.
+3. Comprueba el estado: **Preparando filtro local…** indica arranque; **Filtro local · … pantalla(s)** se anuncia cuando llega una primera imagen procesada. La selección por sí sola no acredita captura activa.
+4. Pulsa **Quitar filtro**, elige **Sin filtro** o di **«Computadora, quitar filtro»** para detenerlo. **«Computadora, filtro deuteranopía»** activa uno por voz.
+
+Las siete matrices simulan alteraciones de color; no son una corrección médica. El filtro deja pasar clics y excluye la propia interfaz de Lite para que puedas desactivarlo. Se reconstruye al cambiar las pantallas conectadas o su disposición. La ventana se muestra tras recibir una imagen y se invalida al detener, para que una imagen tardía no vuelva a cubrir el escritorio.
+
+La composición local por pantalla consume GPU y memoria. Se solicitan hasta 30 imágenes por segundo, sin garantía de alcanzar esa tasa. Contenido protegido, pantallas del sistema y juegos con presentación exclusiva pueden impedir captura o capas; prueba el modo ventana o pantalla completa de escritorio si la aplicación lo ofrece.
+
+## Mascota y panel para seguir trabajando
+
+En **Mascota > Tu mascota** elige **Tinku · gallito**, **Cuchu · cuy**, **Yati · llama** o **Sin mascota**, el valor inicial. Usa **Saludar**, **Dormir** y **Despertar**; por voz, **«mascota Cuchu»**, **«saluda mascota»**, **«duerme mascota»**, **«despierta mascota»** y **«oculta mascota»**. También admite variantes como «Cu Chu», «Yaty» y «elige mascota tiiinku».
+
+El dibujo deja pasar los clics. Arrastra su nombre para moverla, o pulsa **Mover con teclas**, usa las flechas y sal con **Escape**. **Otro monitor** cambia de pantalla. Se recuerdan selección, monitor y posición relativa. Sólo se carga el atlas elegido, con sus secuencias y tiempos; las animaciones se pausan con movimiento reducido y suspensión. Tras 90 segundos sin interacción descansa; una acción despierta ese descanso automático. Después de **Dormir**, hace falta **Despertar**. La lectura y las respuestas habladas acompañan la salida de voz real, sin provocar descanso automático mientras habla.
+
+Pulsa **Usar panel** para mostrar el panel flotante. Su menú **Opciones** reúne **Elegir mascota**, **Filtro de pantalla**, las esquinas y, si hay varias pantallas, los monitores. **Abrir ajustes** regresa a la ventana principal. El panel conserva estado de voz/filtro, transcripción, respuesta, elecciones y **Detener todo**, sobre fondo sólido.
+
+Activa **Mover mascota y panel juntos** para colocarla encima del panel. Arrastra el título de cualquiera para mover ambos; también puedes enfocar el título del panel y usar las flechas. Al separarlos, la mascota recupera su ubicación propia. Se recuerda la posición relativa; elegir esquina vuelve al anclaje. Por voz: **«une mascota al panel»**, **«separa mascota del panel»** o **«panel esquina superior izquierda»**.
+
+Cerrar ajustes mantiene Lite en segundo plano. Desde su icono de la barra de menú puedes **Abrir ajustes**, **Mostrar panel flotante** / **Ocultar panel flotante**, cambiar el filtro, **Activar voz** / **Apagar voz**, **Detener todo** o **Salir de Adapta PE Lite**.
+
+En **Micrófono y preferencias > Iniciar al encender el Mac** puedes registrar el inicio de sesión voluntario. Los siguientes arranques restauran los módulos recordados sólo con permisos ya concedidos; el primer inicio los mantiene apagados. **Salir** conserva las preferencias de sesión; **Detener todo** recuerda los módulos apagados. Al volver del reposo, se intenta recuperar la sesión y se revisa la disponibilidad de sus recursos.
+
+## Qué ocurre dentro del Mac
+
+| Pieza | Responsabilidad |
 | --- | --- |
-| Micrófono | Captura de audio mientras el asistente está activo. |
-| Reconocimiento de voz | Speech transforma audio en texto; se prefiere reconocimiento local. |
-| Accesibilidad | Lectura manual y acciones sobre apps externas. |
-| Grabación de pantalla | Captura/composición local necesaria para filtros; se solicita al activarlos. |
-| Automatización | Control del navegador cuando la acción requiere Apple Events. |
+| [VoiceManager.swift](Adapta-PE-Lite/VoiceManager.swift) y [VoiceInputState.swift](Adapta-PE-Lite/VoiceInputState.swift) | Captura de audio con AVFoundation, reconocimiento con Speech, llamada personal, espera de ocho segundos, recuperación de escucha y protección frente al eco de la síntesis. |
+| [CommandParser.swift](Adapta-PE-Lite/CommandParser.swift) | Prepara cortesías y verbos, conserva el contenido del dictado y convierte órdenes en intenciones. Contiene atajos, elecciones y catálogo de sitios. |
+| [ActionManager.swift](Adapta-PE-Lite/ActionManager.swift) y [ApplicationCatalog.swift](Adapta-PE-Lite/ApplicationCatalog.swift) | Resuelven apps, URLs, navegador, elecciones y respuestas de AVSpeechSynthesizer. Las acciones del navegador usan `/usr/bin/osascript` con argumentos preparados por la app; una frase no se ejecuta como shell. |
+| [DesktopAccess.swift](Adapta-PE-Lite/DesktopAccess.swift) | Consulta AX para menús, campos y lectura manual; activa controles y envía teclado/clic mediante CoreGraphics. Comprueba destino y cancelación antes de actuar. |
+| [ColorFilterManager.swift](Adapta-PE-Lite/ColorFilterManager.swift) | Captura con ScreenCaptureKit, aplica matrices con Core Image y presenta capas por pantalla, sin capturar el audio del sistema. |
+| [Adapta_PE_LiteApp.swift](Adapta-PE-Lite/Adapta_PE_LiteApp.swift), [ContentView.swift](Adapta-PE-Lite/ContentView.swift), [FloatingView.swift](Adapta-PE-Lite/FloatingView.swift) y [Mascot.swift](Adapta-PE-Lite/Mascot.swift) | Coordinan sesión, permisos, inicio con ServiceManagement, ajustes, barra de menú, panel y sprites locales. |
 
-Lite no solicita cámara. **Apple por red** sólo se admite mediante una opción explícita: si la activas, Apple puede procesar el audio para reconocimiento. La ausencia de un modelo local produce diagnóstico; no equivale a tener voz disponible en todos los Mac.
+## Privacidad y límites
 
-No se guardan grabaciones, capturas ni transcripciones. El texto mostrado y la selección viven en memoria. Los filtros procesan imágenes localmente. Preferencias y permisos están separados de Base por `com.thealejo.Adapta-PE-Lite`; el repositorio no contiene datos personales de sesión ni llaves de firma.
+El reconocimiento local es el valor predeterminado. Activar **Permitir reconocimiento de Apple por red** permite que Apple procese audio por red cuando no haya reconocimiento local adecuado. Lite no incorpora un proveedor de IA externo ni solicita claves API.
 
-## Documentación del código
+Los filtros procesan imágenes en memoria dentro del Mac, sin guardarlas ni enviarlas. La app no implementa almacenamiento de grabaciones o transcripciones; la transcripción visible es temporal. Se guardan preferencias de dispositivos, activación, filtros, inicio y posición de ventanas/mascotas. Los registros locales contienen estados y errores técnicos, no un historial de dictados implementado por Lite.
 
-| Archivo | Responsabilidad |
-| --- | --- |
-| [Adapta_PE_LiteApp.swift](Adapta-PE-Lite/Adapta_PE_LiteApp.swift) | Entrada, composición `AppModel`, barra de menú, preferencias, panel, inicio de sesión, suspensión y parada. |
-| [ContentView.swift](Adapta-PE-Lite/ContentView.swift) | Secciones de voz/filtros y controles nativos SwiftUI. |
-| [FloatingView.swift](Adapta-PE-Lite/FloatingView.swift) | Estado temporal, respuestas, elecciones y controles del panel flotante. |
-| [VoiceManager.swift](Adapta-PE-Lite/VoiceManager.swift) | Captura AVFoundation, Speech, disponibilidad local, recuperación y coordinación con TTS. |
-| [VoiceInputState.swift](Adapta-PE-Lite/VoiceInputState.swift) | Palabra de activación, ventana de ocho segundos, deduplicación e interrupción de lectura. |
-| [CommandParser.swift](Adapta-PE-Lite/CommandParser.swift) | Intenciones, sinónimos, sitios, atajos, destinos y elecciones. |
-| [ActionManager.swift](Adapta-PE-Lite/ActionManager.swift) | Ejecuta órdenes, mantiene destino externo y coordina respuestas y opciones. |
-| [ApplicationCatalog.swift](Adapta-PE-Lite/ApplicationCatalog.swift) | Catálogo local de apps y resolución de nombres/alias. |
-| [DesktopAccess.swift](Adapta-PE-Lite/DesktopAccess.swift) | Árbol AX, campos, menús, selección, lectura manual y entrada CGEvent. |
-| [ColorFilterManager.swift](Adapta-PE-Lite/ColorFilterManager.swift) | Siete matrices, captura/composición de pantallas y liberación del filtro. |
-| [script/build_and_run.sh](script/build_and_run.sh) | Compilación/lanzamiento y modos de diagnóstico local. |
-| [LiteTests.swift](Adapta-PE-LiteTests/LiteTests.swift) y [LiteUITests.swift](Adapta-PE-LiteUITests/LiteUITests.swift) | Regresiones de alcance y sesión; navegación de interfaz sin sensores. |
+Abrir sitios y hacer búsquedas utiliza el navegador y los servicios correspondientes. El reconocimiento local no hace privadas las consultas enviadas a esas webs. Los sprites se incluyen en [Mascotas](Adapta-PE-Lite/Mascotas/README.md).
 
-El recorrido de voz es **AVFoundation → Speech → VoiceInputState → CommandParser → ActionManager → AX/CGEvent/Apple Events → respuesta**. `AppModel` conecta los módulos y coordina su vida. `stopAll` invalida acciones pendientes antes de detener voz, filtros, TTS y selección. La UI mantiene separado el destino externo de sus propias ventanas.
-
-El recorrido de filtros es **captura local de pantalla → matriz de color → composición → salida visible**. Retirar el filtro invalida la salida y libera captura/ventanas. No actúa sobre los colores del archivo original.
-
-Los motores excluidos no forman parte de las fuentes compiladas: no hay TrackingManager, KineticState, OptionalAI ni TalkBackManager. Lite no cambia de edición mediante una condición `LITE` ni referencia archivos de Base. El proyecto y el esquema compartido se conservan; `xcuserdata`, DerivedData, `.app`, `.dmg`, builds, logs y credenciales quedan fuera de Git.
-
-## Compilación y pruebas
-
-Las pruebas de lógica pueden ejecutarse sin firma de distribución:
-
-```sh
-xcodebuild -project Adapta-PE-Lite.xcodeproj -scheme Adapta-PE-Lite \
-  -destination 'platform=macOS' -derivedDataPath /tmp/adapta-lite-check \
-  -only-testing:Adapta-PE-LiteTests CODE_SIGNING_ALLOWED=NO test
-```
-
-Para incluir las pruebas de interfaz, usa una firma de desarrollo configurada y ejecuta `test` sin restringir el target:
-
-```sh
-xcodebuild -project Adapta-PE-Lite.xcodeproj -scheme Adapta-PE-Lite \
-  -destination 'platform=macOS' -derivedDataPath /tmp/adapta-lite-ui test
-```
-
-La regresión de lógica valida alcance Lite, Unicode, matrices, apagado/memoria de sesión, inicio de sesión y anclaje del panel. La prueba UI recorre ambas secciones, el panel y el cierre de ajustes sin activar sensores. Consulta [docs/LITE.md](docs/LITE.md) para las capturas y resultados de interfaz.
-
-El **3 de octubre de 2026** pasó la prueba de lógica desde este proyecto independiente con Xcode 27. Se contrastó el mapa con el índice actualizado y sus fuentes; la configuración Xcode y el script se leyeron directamente. Esto no acredita reconocimiento español con micrófono real, permisos, filtros en múltiples pantallas ni firma/notarización de distribución. Esos escenarios requieren pruebas físicas.
+El proyecto habilita hardened runtime, desactiva App Sandbox y no referencia un archivo `.entitlements` propio. Declara usos de micrófono, reconocimiento y Apple Events; el acceso al micrófono está habilitado y el de cámara deshabilitado. Estos ajustes no prueban que una distribución esté notarizada.
 
 ## Solución de problemas
 
-| Síntoma | Comprobación |
+| Qué pasa | Qué revisar en macOS Lite |
 | --- | --- |
-| Error de equipo de firma | Cambia el equipo del autor por el tuyo en Xcode. |
-| `xcodebuild` apunta sólo a Command Line Tools | Selecciona el Xcode completo con `xcode-select` y completa sus componentes. |
-| No hay reconocimiento local | Comprueba disponibilidad de Speech español y micrófono; Apple por red es una decisión explícita del usuario. |
-| No actúa sobre otra app | Comprueba Accesibilidad y que el control exponga un patrón AX; algunos contenidos no son accesibles. |
-| No se ve el filtro | Comprueba permiso de captura de pantalla, filtro seleccionado y diagnóstico del módulo. |
-| Cerrar ajustes no termina Lite | Es el funcionamiento en segundo plano; usa **Salir** desde la barra de menú. |
+| Xcode pide el equipo de firma del autor | Selecciona tu Team en Signing & Capabilities del target y, si corresponde, de pruebas. No necesitas acceso al equipo original. |
+| Terminal dice que `xcodebuild` necesita Xcode | Abre Xcode completo, termina sus componentes y revisa `xcode-select`; usa el cambio de ruta indicado en instalación si coincide con tu instalación. |
+| Xcode no reconoce grupos o APIs de interfaz | Usa una versión con soporte para los grupos sincronizados y el SDK de macOS 26. El destino mínimo macOS 14 no es el SDK de compilación. |
+| macOS bloquea una copia descargada por desarrollador no identificado | Comprueba su procedencia. Si confías en ella y el sistema ofrece **Abrir igualmente** en Privacidad y seguridad, usa esa excepción para la app. No desactives Gatekeeper globalmente. Un aviso de malware, archivo dañado o política de administración requiere revisar ese problema concreto. |
+| «Micrófono sin permiso» o «Reconocimiento de voz sin permiso» | Habilita Lite en la categoría correspondiente de Privacidad y seguridad. La interfaz ofrece **Revisar permiso del micrófono** o **Revisar reconocimiento de voz** cuando están denegados. |
+| «Español local no disponible» | Comprueba recursos españoles de dictado de macOS. Lite intenta `es-PE`, `es-ES` y `es-MX`; la alternativa de Apple por red requiere que actives su opción voluntariamente. |
+| «Dispositivo no disponible» o no entra audio | Revisa el micrófono conectado y la entrada de sonido de macOS. Pulsa **Actualizar dispositivos y permisos**, selecciona el dispositivo y vuelve a activar voz; comprueba si otra app lo está usando. |
+| No reacciona después de la llamada | Mira el estado y **Escuché:**, espera la señal si llamaste sin orden y habla dentro de ocho segundos. Comprueba la palabra personal y el idioma del reconocedor. |
+| No escribe, pulsa ni lee otra app | Autoriza Accesibilidad para la copia que ejecutas y activa la ventana de destino. La app debe exponer controles AX; imágenes, juegos y campos protegidos pueden quedar fuera. |
+| El navegador rechaza la acción | Repite la orden y revisa Automatización para el navegador solicitado. Para control específico, comprueba que sea Safari, Chrome, Brave o Edge. |
+| Se cancela una elección | Caduca a los 45 segundos y no se ejecuta sobre otra app o ventana. Vuelve a listar los campos o acciones en el destino correcto. |
+| El filtro no aparece o se interrumpe | Revisa Grabación de pantalla y el estado del módulo; vuelve a activarlo después de conceder permiso. Prueba contenido no protegido. Si necesitas quitarlo, usa **Quitar filtro** o **Detener todo**. |
+| No ves el cambio de color en los ajustes de Lite | Es intencional: la app se excluye de su propia captura para mantener accesible el control de parada. Comprueba otra ventana. |
+| El filtro consume demasiado en varias pantallas | Desactívalo cuando no lo necesites. La composición depende de resolución, cantidad de monitores y GPU; el repo no acredita una tasa de FPS en tu equipo. |
+| La mascota se queda quieta | Revisa movimiento reducido, reposo automático o **Dormir** manual; pulsa **Despertar** para salir del sueño manual. |
+| Cerrar la ventana no termina el proceso | Lite sigue en la barra de menú. Usa **Salir de Adapta PE Lite** para terminarla. |
+| Voz o filtros responden por duplicado | Actívalos en una sola edición si también tienes Base abierta. |
 
-## Proyectos de la familia Adapta PE
+## Desarrollo y pruebas
 
-| Programa | Repositorio |
-| --- | --- |
-| Extensión Base | [Adapta-PE](https://github.com/TheAlejo160/Adapta-PE) |
-| Extensión Lite | [Adapta-PE-Lite](https://github.com/TheAlejo160/Adapta-PE-Lite) |
-| Windows Base | [Adapta-PE-Win](https://github.com/TheAlejo160/Adapta-PE-Win) |
-| Windows Lite | [Adapta-PE-Lite-Win](https://github.com/TheAlejo160/Adapta-PE-Lite-Win) |
-| macOS completo | [Adapta-PE-MacOS-Intel-Apple-Silicon-](https://github.com/TheAlejo160/Adapta-PE-MacOS-Intel-Apple-Silicon-) |
-| macOS Lite | [Adapta-PE-Lite-MacOS](https://github.com/TheAlejo160/Adapta-PE-Lite-MacOS) |
+Desde la raíz del repo, el esquema compartido incluye **Adapta-PE-LiteTests** y **Adapta-PE-LiteUITests**. Para ejecutar sólo las pruebas de lógica:
 
-Cada plataforma tiene su propio proyecto, permisos y versión. Un ZIP de extensión no instala una app de escritorio.
+```sh
+xcodebuild test -project Adapta-PE-Lite.xcodeproj -scheme Adapta-PE-Lite \
+  -destination 'platform=macOS' -derivedDataPath /tmp/adapta-pelite-tests \
+  -only-testing:Adapta-PE-LiteTests
+```
 
-## Licencia
+Configura antes la firma de los targets. Para una comprobación local sin firma, la guía existente documenta `CODE_SIGNING_ALLOWED=NO`; eso no valida distribución ni permisos de una app firmada. Las pruebas UI se ejecutan por separado desde Xcode y pueden necesitar autorización de automatización del entorno de pruebas.
 
-© 2026 Rodrigo Alejandro Apcho Aliaga — TheAlejo160. [LICENSE](LICENSE): **CC BY-NC-SA 4.0**. Se mantienen las atribuciones y condiciones del autor; publicar las fuentes no cambia sus condiciones de reutilización.
+La suite de lógica contiene comprobaciones del alcance Lite, parser/dictado Unicode, activación personal, parada global, filtros/presentación, sesión, micrófonos sintéticos, mascotas y posiciones del panel. Las pruebas UI recorren ajustes y panel sin acreditar micrófono ni captura real. No confundas una prueba textual o sintética con funcionamiento acústico o con permisos reales.
 
-## Filtros: presentación segura (17 de octubre de 2026)
+Consulta [la guía específica de Lite y sus capturas](docs/LITE.md), [la captura del asistente](docs/lite/voz.png), [la captura de filtros](docs/lite/daltonismo.png) y [la guía de evolución entre plataformas](AdaptaPE.md). Esta última también contiene objetivos y brechas: no todas sus propuestas están implementadas aquí.
 
-El filtro espera una imagen procesada antes de mostrar su ventana, evitando una cubierta negra al arrancar. Detener invalida inmediatamente la presentación: un cuadro que ya estaba en camino no vuelve a mostrarla. El estado informa de filtro activo al recibir el primer cuadro. Se mantienen las matrices, el permiso de Grabación de pantalla y el procesamiento local en memoria.
+Esta reescritura del README se contrastó con las fuentes, el script y la configuración Xcode; **no ejecutó builds ni tests**. Las comprobaciones históricas de interfaz están fechadas en `docs/LITE.md`. Quedan por validar en cada equipo el micrófono, disponibilidad local de español, permisos, monitores, filtros sobre contenido real, inicio de sesión, consumo, Intel/Apple Silicon y distribución firmada/notarizada.
 
-FilterPresentationTests.testFirstImageAndCancellation usa una imagen sintética para probar la primera presentación, un solo aviso inicial y el rechazo después de invalidar. Esta prueba no acredita captura real, contenido protegido, monitores ni rendimiento físico.
+## Cuándo elegir macOS Base
 
-### Llamada personal y parada durante lectura: 17 de octubre de 2026
+Si necesitas cámara, movimiento cinético del puntero o lectura automática bajo el cursor, consulta [Adapta PE Base para macOS](https://github.com/TheAlejo160/Adapta-PE-MacOS-Intel-Apple-Silicon-). Lite mantiene el alcance de voz, lectura explícita, filtros, mascotas y panel, con un proyecto y permisos propios.
 
-La activación de voz ahora compara acentos y espacios equivalentes sin perder los índices del texto original. Una llamada personalizada como «Máquina Azul» admite transcripción sin tilde y espacios variables; el contenido que sigue conserva acentos, mayúsculas y espacios. Durante TTS, «por favor detén todo» atraviesa la protección de eco y llega a la parada global; dictado y búsquedas conservan su contenido. PersonalWakeTests y GlobalStopTests pasaron con Xcode en macOS Apple Silicon. Son pruebas textuales, no validación del micrófono ni del reconocimiento acústico.
+También existen la [extensión Lite para Chromium](https://github.com/TheAlejo160/Adapta-PE-Lite), la [extensión Base](https://github.com/TheAlejo160/Adapta-PE), [Windows Lite](https://github.com/TheAlejo160/Adapta-PE-Lite-Win) y [Windows Base](https://github.com/TheAlejo160/Adapta-PE-Win). Cada una tiene su instalación y límites; un ZIP de extensión no instala esta app. Información del proyecto en el [sitio oficial de Adapta PE](https://www.adaptape.cc).
 
-### Contraste, foco y micrófono: 17 de octubre de 2026
+## Autoría y licencia
 
-El fondo de cabecera usa una capa negra del 60 % para que el subtítulo blanco mantenga contraste incluso sobre zonas claras (peor caso calculado 5,74:1). Los botones propios añaden un indicador interior de foco por teclado. El selector conserva Predeterminado y la selección válida; actualizar un ID retirado vuelve a Predeterminado. Una captura solicitada con un micrófono explícito ausente falla en lugar de usar silenciosamente otro dispositivo. Las pruebas de selección con IDs sintéticos y la compilación pasaron; no se validaron desconexión física, dibujo del foco ni VoiceOver.
+© 2026 Rodrigo Alejandro Apcho Aliaga, TheAlejo160. El logo Lite y los recursos de mascotas se conservan con sus atribuciones en el repositorio. Consulta [LICENSE](LICENSE): **Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)**. Publicar las fuentes no modifica esas condiciones de reutilización.
