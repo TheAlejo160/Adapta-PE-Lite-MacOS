@@ -16,12 +16,18 @@ enum PanelCorner: String, CaseIterable {
         case .lowerRight: return "Inferior derecha"
         }
     }
-    func frame(size: CGSize, visible: CGRect) -> CGRect {
+    func frame(size: CGSize, visible screen: CGRect, free: CGPoint? = nil, reservedHeight: CGFloat = 0) -> CGRect {
+        let visible = CGRect(x: screen.minX, y: screen.minY, width: screen.width, height: max(1, screen.height - reservedHeight))
         let margin: CGFloat = 16
         let width = min(size.width, max(1, visible.width - margin * 2))
         let height = min(size.height, max(1, visible.height - margin * 2))
         let left = self == .upperLeft || self == .lowerLeft
         let upper = self == .upperLeft || self == .upperRight
+        if let free {
+            let x = free.x.isFinite ? min(1, max(0, free.x)) : 0.5
+            let y = free.y.isFinite ? min(1, max(0, free.y)) : 0.5
+            return CGRect(x: visible.minX + x * max(0, visible.width - width), y: visible.minY + y * max(0, visible.height - height), width: width, height: height)
+        }
         return CGRect(x: left ? visible.minX + margin : visible.maxX - margin - width,
                       y: upper ? visible.maxY - margin - height : visible.minY + margin,
                       width: width, height: height)
@@ -65,10 +71,11 @@ final class AppModel: ObservableObject {
     static let shared = AppModel()
     let voice = VoiceManager()
     let colorFilter = ColorFilterManager()
+    let mascot = MascotManager()
     let actions = ActionManager.shared
     @Published var floatingVisible = false { didSet { UserDefaults.standard.set(floatingVisible, forKey: "FloatingVisible") } }
     @Published var floatingCorner = PanelCorner(rawValue: UserDefaults.standard.string(forKey: "FloatingCorner") ?? "") ?? .lowerRight {
-        didSet { UserDefaults.standard.set(floatingCorner.rawValue, forKey: "FloatingCorner"); positionFloating() }
+        didSet { UserDefaults.standard.set(floatingCorner.rawValue, forKey: "FloatingCorner"); UserDefaults.standard.set(false, forKey: "FloatingFree"); positionFloating() }
     }
     @Published var floatingScreenID = UserDefaults.standard.string(forKey: "FloatingScreenID") ?? "" {
         didSet { UserDefaults.standard.set(floatingScreenID, forKey: "FloatingScreenID"); positionFloating() }
@@ -89,14 +96,21 @@ final class AppModel: ObservableObject {
     private var resumeFilter: ColorFilter = .ninguno
 
     private init() {
+        mascot.layoutChanged = { [weak self] in self?.positionFloating() }
+        mascot.movePanel = { [weak self] in self?.moveFloating($0) }
+        mascot.savePanel = { [weak self] in self?.saveFloatingPosition() }
+        mascot.nextPanelScreen = { [weak self] in self?.nextFloatingScreen() }
         voice.fetchMics()
         colorFilter.objectWillChange.sink { [weak self] in self?.objectWillChange.send() }.store(in: &stateObservers)
         voice.objectWillChange.sink { [weak self] in self?.objectWillChange.send() }.store(in: &stateObservers)
         filterObserver = colorFilter.$selected.sink { [weak self] selected in self?.settingsWindow?.level = selected == .ninguno ? .normal : .statusBar }
-        actions.speechOutput = { [weak self] in self?.voice.setSpeechOutput($0) }
+        actions.speechReading = { [weak self] in self?.mascot.react("idle"); self?.mascot.prepareSpeech(reading: $0) }
+        actions.speechOutput = { [weak self] in self?.voice.setSpeechOutput($0); self?.mascot.speaking($0) }
         actions.appAction = { [weak self] in self?.appAction($0) }
-        voice.onWake = { [weak self] in self?.actions.callar() }
-        voice.onCommand = { [weak self] in self?.actions.procesarIntencion($0) }
+        voice.onWake = { [weak self] in self?.actions.callar(); self?.mascot.react("phone") }
+        voice.onCommand = { [weak self] text in
+            self?.actions.procesarIntencion(text)
+        }
         voice.followUpAllowed = { [weak self] in self?.actions.hasChoices == true }
         actions.showFeedback = { [weak self] in self?.showFloating() }
         actions.$choices.sink { [weak self] choices in self?.positionFloating(choiceCount: choices.count) }.store(in: &stateObservers)
@@ -126,7 +140,7 @@ final class AppModel: ObservableObject {
         observers.append(NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: .main) { [weak self] _ in
             Task { @MainActor [weak self] in
                 guard let self else { return }
-                self.refreshPermissions()
+                self.refreshPermissions(); self.mascot.suspend(false)
                 if self.resumeVoice { self.voice.startListening() }
                 if self.resumeFilter != .ninguno { self.colorFilter.apply(self.resumeFilter) }
                 self.resumeVoice = false; self.resumeFilter = .ninguno
@@ -145,8 +159,9 @@ final class AppModel: ObservableObject {
     func openPrivacy(_ pane: String) {
         if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_" + pane) { NSWorkspace.shared.open(url) }
     }
-    func toggleVoice() { voice.isListening || voice.isStarting ? voice.stopListening() : voice.startListening() }
+    func toggleVoice() { mascot.react("phone"); voice.isListening || voice.isStarting ? voice.stopListening() : voice.startListening() }
     func stopAll(remember: Bool = true) {
+        mascot.react("idle"); if !remember { mascot.suspend(true) }
         suspending = !remember
         actions.cancelPendingActions(); voice.stopListening(remember: remember)
         colorFilter.stop(); actions.callar(); DesktopAccess.shared.cancelSelection()
@@ -155,6 +170,7 @@ final class AppModel: ObservableObject {
     func restoreSession() {
         guard NSClassFromString("XCTestCase") == nil, !ProcessInfo.processInfo.arguments.contains("--uitesting") else { return }
         let defaults = UserDefaults.standard
+        mascot.choose(defaults.string(forKey: "Mascot") ?? "ninguna")
         // Restaurar sólo accesos ya autorizados; nunca abrir permisos durante el inicio de sesión.
         if defaults.bool(forKey: "VoiceActive"), AVCaptureDevice.authorizationStatus(for: .audio) == .authorized, SFSpeechRecognizer.authorizationStatus() == .authorized { voice.startListening() }
         if CGPreflightScreenCaptureAccess(), let filter = ColorFilter(rawValue: defaults.string(forKey: "ActiveColorFilter") ?? "ninguno"), filter != .ninguno { colorFilter.apply(filter) }
@@ -184,9 +200,10 @@ final class AppModel: ObservableObject {
     func showFloating(hideSettings: Bool = true) {
         if floatingScreenID.isEmpty, let screen = NSScreen.main ?? screens.first { floatingScreenID = Self.screenID(screen) }
         if floatingPanel == nil {
-            let panel = NSPanel(contentRect: NSRect(x: 0, y: 0, width: 320, height: 240), styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
+            let panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: 320, height: 240), styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
+            panel.title = "Adapta PE Lite · panel"
             panel.isOpaque = false; panel.backgroundColor = .clear; panel.level = .statusBar
-            panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]; panel.isMovable = false; panel.isMovableByWindowBackground = false
+            panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .canJoinAllApplications]; panel.isMovable = false; panel.isMovableByWindowBackground = false
             panel.hidesOnDeactivate = false; panel.isReleasedWhenClosed = false
             panel.contentView = NSHostingView(rootView: FloatingView(model: self))
             floatingPanel = panel
@@ -199,16 +216,50 @@ final class AppModel: ObservableObject {
     private func positionFloating(choiceCount: Int? = nil) {
         guard let panel = floatingPanel, let screen = screens.first(where: { Self.screenID($0) == floatingScreenID }) ?? screens.first else { return }
         let count = choiceCount ?? actions.choices.count
-        let size = CGSize(width: 320, height: count == 0 ? 240 : 240 + count * 44 + 48)
-        panel.setFrame(floatingCorner.frame(size: size, visible: screen.visibleFrame), display: true)
+        let size = CGSize(width: 320, height: count == 0 ? 312 : 312 + count * 44 + 48)
+        let defaults = UserDefaults.standard
+        let free = defaults.bool(forKey: "FloatingFree") ? CGPoint(x: defaults.double(forKey: "FloatingX"), y: defaults.double(forKey: "FloatingY")) : nil
+        let frame = floatingCorner.frame(size: size, visible: screen.visibleFrame, free: free, reservedHeight: mascot.linked && mascot.name != "ninguna" ? 164 : 0)
+        panel.setFrame(frame, display: true)
+        mascot.attach(to: floatingVisible ? frame : nil)
     }
-    func hideFloating() { floatingVisible = false; floatingPanel?.orderOut(nil) }
+    func moveFloating(_ delta: CGPoint) {
+        guard let panel = floatingPanel else { return }
+        let point = CGPoint(x: panel.frame.minX + delta.x, y: panel.frame.minY + delta.y)
+        let dragging = NSApp.currentEvent?.type != .keyDown
+        guard let screen = (dragging ? screens.first(where: { $0.frame.contains(NSEvent.mouseLocation) }) : panel.screen) ?? panel.screen else { return }
+        let visible = screen.visibleFrame, reserved: CGFloat = mascot.linked && mascot.name != "ninguna" ? 164 : 0
+        let origin = CGPoint(x: max(visible.minX, min(visible.maxX - panel.frame.width, point.x)), y: max(visible.minY, min(visible.maxY - reserved - panel.frame.height, point.y)))
+        panel.setFrameOrigin(origin); mascot.attach(to: panel.frame)
+    }
+    func saveFloatingPosition() {
+        guard let panel = floatingPanel, let screen = panel.screen else { return }
+        let visible = screen.visibleFrame, reserved: CGFloat = mascot.linked && mascot.name != "ninguna" ? 164 : 0
+        let defaults = UserDefaults.standard
+        defaults.set((panel.frame.minX - visible.minX) / max(1, visible.width - panel.frame.width), forKey: "FloatingX")
+        defaults.set((panel.frame.minY - visible.minY) / max(1, visible.height - reserved - panel.frame.height), forKey: "FloatingY")
+        defaults.set(true, forKey: "FloatingFree")
+        floatingScreenID = Self.screenID(screen)
+    }
+    func nextFloatingScreen() {
+        guard screens.count > 1 else { notice = "Sólo hay una pantalla conectada"; return }
+        let index = screens.firstIndex(where: { Self.screenID($0) == floatingScreenID }) ?? 0
+        floatingScreenID = Self.screenID(screens[(index + 1) % screens.count])
+    }
+    func hideFloating() { floatingVisible = false; floatingPanel?.orderOut(nil); mascot.attach(to: nil) }
     private func appAction(_ command: String) {
+        mascot.react("laptop")
+        if command.hasPrefix("mascota:") {
+            let value = String(command.dropFirst(8))
+            if MascotManager.names.contains(value) { mascot.choose(value) } else { mascot.gesture(value) }
+            actions.hablar(mascot.status); return
+        }
         switch command {
         case "mostrar ajustes", "abrir adapta", "mostrar adapta": showSettings()
         case "modo flotante": showFloating()
         case "ocultar adapta": hideFloating(); settingsWindow?.orderOut(nil)
         case "detener todo": stopAll()
+        case "desactivar voz": voice.stopListening()
         case "activar talkback", "desactivar talkback": actions.hablar("TalkBack automático no está incluido en Adapta PE Lite")
         default:
             if command.hasPrefix("filtro:"), let filter = ColorFilter(rawValue: String(command.dropFirst(7))) { colorFilter.apply(filter) }
@@ -238,3 +289,5 @@ struct WindowReference: NSViewRepresentable {
     func makeNSView(context: Context) -> NSView { let view = NSView(); DispatchQueue.main.async { if let window = view.window { window.isReleasedWhenClosed = false; window.level = .normal; onWindow(window) } }; return view }
     func updateNSView(_ view: NSView, context: Context) { DispatchQueue.main.async { if let window = view.window { onWindow(window) } } }
 }
+
+private final class FloatingPanel: NSPanel { override var canBecomeKey: Bool { true } }

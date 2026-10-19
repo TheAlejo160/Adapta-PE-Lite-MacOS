@@ -36,7 +36,7 @@ El proyecto incluye un equipo de firma del autor: cámbialo por el tuyo si no ti
 
 - **Asistente de voz:** palabra de activación personalizable, señal de escucha, dictado Unicode, apps, sitios, búsqueda, pestañas, ventanas, monitores, teclado, menús, campos, selección, clic y clic derecho. Mantiene respuestas habladas, lectura bajo una orden explícita y elecciones numeradas del asistente base.
 - **Daltonismo:** protanomalía, protanopía, deuteranomalía, deuteranopía, tritanomalía, tritanopía y acromatopsia. Comparte las matrices de las versiones web y base. Son simulaciones de color; no una corrección médica.
-- **Segundo plano:** cerrar ajustes no termina la app. Barra de menú para abrir ajustes, activar voz, cambiar filtros, detener todo o salir. Panel flotante sin robar foco, anclado a una esquina y monitor; conserva transcripción, respuesta y elecciones. Inicio de sesión opcional, recuperación después del reposo y preferencias propias de Lite.
+- **Segundo plano:** cerrar ajustes no termina la app. Barra de menú para abrir ajustes, activar voz, cambiar filtros, detener todo o salir. Panel flotante sin robar foco, con arrastre libre o anclaje a esquina/monitor, posición recordada y mascota opcional unida arriba; conserva transcripción, respuesta y elecciones. Inicio de sesión opcional, recuperación después del reposo y preferencias propias de Lite.
 
 No incluye cámara, cursor cinético, lectura automática bajo el cursor ni IA externa. Esos motores no se compilan en Lite. La lectura solicitada por voz pertenece al asistente; no activa TalkBack automático.
 
@@ -63,3 +63,13 @@ El micrófono real, español local, permisos, filtros sobre varias pantallas e i
 El 3 de octubre de 2026, la Lite independiente pasó las pruebas de lógica e interfaz con firma de desarrollo y Xcode 27, desde esta raíz. Se comprobó el cierre de ajustes, el panel flotante y las dos secciones, sin activar micrófono ni captura de pantalla. Base también pasó sus regresiones tras retirar los archivos Lite. Las capturas muestran la interfaz real; el diseño se conserva durante la separación.
 
 El repositorio conserva su historia inicial y publica el proyecto independiente, sus fuentes, iconos, pruebas y documentación. Los respaldos temporales y productos generados quedan fuera de la distribución.
+
+## Mascota opcional y pantalla completa · 11 de octubre de 2026
+
+La tercera sección, Mascota, permite elegir Tinku, Cuchu o Yati, ocultarla, saludar, dormir y despertar. Se carga sólo el atlas elegido, con entrada/salida y tiempos originales; la suspensión y movimiento reducido detienen el temporizador. Voz y lectura manual cambian su animación durante la salida TTS real. Nombre, monitor y posición relativa se guardan en preferencias propias. Arrastra su nombre o usa las flechas. Los sprites dejan pasar clics.
+
+Filtros y mascota se unen a otros Spaces y apps en pantalla completa; los filtros se reconstruyen al cambiar pantallas. Contenido protegido o presentación exclusiva puede impedir composición. Consulte el README para comandos, límites y pruebas. El proyecto sigue sin importar cámara, cinética, IA o TalkBack automático de la edición completa.
+
+## Panel y mascota · 11 de octubre de 2026
+
+Opciones reúne compañía, unión/separación, filtros, esquina y monitor. El título admite arrastre o flechas; se guarda posición relativa. La mascota unida se mueve con PiP; independiente recupera su ubicación propia. Descansa tras 90 segundos sin interacción; lectura/habla impiden descanso automático. El sueño manual exige despertar. Teléfono/laptop terminan en reposo; TTS real activa lectura/habla. Contenido sobre fondo sólido; Ajustes utiliza Liquid Glass en macOS 26 y estilo sencillo en versiones anteriores o al reducir transparencia. Tres pruebas de lógica cubren el alcance independiente, recursos/comandos y posiciones/actividad, sin activar sensores.

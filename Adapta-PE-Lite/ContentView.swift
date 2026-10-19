@@ -20,26 +20,27 @@ struct ContentView: View {
             GeometryReader { geo in
                 Image("FondoApp").resizable().scaledToFill()
                     .frame(width: geo.size.width, height: geo.size.height).clipped()
-                    .overlay(Color.black.opacity(0.5))
+                    .overlay(Color.black.opacity(0.6))
             }.ignoresSafeArea()
             VStack(alignment: .leading, spacing: 16) {
                 HStack(spacing: 14) {
                     Image("LiteLogo").resizable().scaledToFit().frame(width: 76, height: 76).accessibilityHidden(true)
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Adapta PE Lite").font(.largeTitle.bold())
+                        Text("Adapta PE Lite").font(.system(size: 30, weight: .bold))
                         Text("Tu voz. Tus colores.").font(.body)
                     }.foregroundStyle(.white)
                     Spacer()
-                    Button("Panel flotante", systemImage: "pip") { model.showFloating() }
+                    Button("Usar panel", systemImage: "pip") { model.showFloating() }
                 }
-                VStack(alignment: .leading, spacing: 18) {
+                VStack(alignment: .leading, spacing: 16) {
                     Picker("Función", selection: $section) {
                         Text("Asistente de voz").tag("Voz")
-                        Text("Daltonismo").tag("Color")
+                        Text("Filtros de color").tag("Color")
+                        Text("Mascota").tag("Mascota")
                     }.pickerStyle(.segmented).labelsHidden()
                     ScrollView {
                         VStack(alignment: .leading, spacing: 18) {
-                            if section == "Voz" { voiceSettings } else { colorSettings }
+                            if section == "Voz" { voiceSettings } else if section == "Color" { colorSettings } else { MascotSettings(mascot: model.mascot) }
                         }.frame(maxWidth: .infinity, alignment: .leading).padding(2)
                     }
                     Divider()
@@ -60,7 +61,7 @@ struct ContentView: View {
     private var voiceSettings: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Controla tu Mac con la voz").font(.title2.bold())
-            Toggle(isOn: Binding(get: { voice.isListening || voice.isStarting }, set: { $0 ? voice.startListening() : voice.stopListening() })) {
+            Toggle(isOn: Binding(get: { voice.isListening || voice.isStarting }, set: { _ in model.toggleVoice() })) {
                 Label("Asistente de voz", systemImage: "mic")
                 Text(voice.status).font(.callout).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
             }.toggleStyle(.switch).frame(minHeight: 44).accessibilityLabel("Control por voz").accessibilityValue(voice.status)
@@ -82,6 +83,8 @@ struct ContentView: View {
                 Button("Revisar reconocimiento de voz") { model.openPrivacy("SpeechRecognition") }
             }
             Divider()
+            Text("Prueba «computadora, por favor abre Safari» o «computadora, quiero que abras Safari». Para dictar, di «escribe» y tu texto; las palabras siguientes se conservan.")
+                .font(.callout).fixedSize(horizontal: false, vertical: true)
             DisclosureGroup("Micrófono y preferencias") {
                 VStack(alignment: .leading, spacing: 14) {
                     Picker("Micrófono", selection: $voice.selectedMicID) {
@@ -114,11 +117,11 @@ struct ContentView: View {
     private var colorSettings: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("Filtros de daltonismo").font(.title2.bold())
-            Picker("Filtro de pantalla", selection: Binding(get: { filter.selected }, set: { filter.apply($0) })) {
+            Picker("Filtro de pantalla", selection: Binding(get: { filter.selected }, set: { model.mascot.react("laptop"); filter.apply($0) })) {
                 ForEach(ColorFilter.allCases) { Text($0.title).tag($0) }
             }
             if filter.isStarting { ProgressView("Preparando filtro…") }
-            Text(filter.status).foregroundStyle(.secondary)
+            Text(filter.isStarting ? "Preparando: " + filter.selected.title : filter.selected == .ninguno ? filter.status : "Activo: " + filter.selected.title + " · " + filter.status).foregroundStyle(.secondary)
             HStack(spacing: 0) {
                 ForEach(Array([Color.red, .green, .blue, .yellow, .purple, .orange].enumerated()), id: \.offset) { _, color in
                     color.frame(height: 44)

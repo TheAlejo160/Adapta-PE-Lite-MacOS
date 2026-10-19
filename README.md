@@ -2,11 +2,58 @@
 
 # Adapta PE Lite para macOS
 
+## Comandos naturales: bloque del 17 de octubre de 2026
+
+La palabra predeterminada admite «Computadora», «Computadoras» y «Computador». Una llamada seguida sólo de cortesía mantiene la espera de ocho segundos. Las palabras personales siguen siendo independientes: elegir «Asistente» no activa esos alias. Se conserva el texto original tras la llamada, incluidos espacios interiores y Unicode; las pruebas de texto no acreditan reconocimiento con micrófono.
+
+El parser acepta cortesía y variantes españolas como «por favor abre Safari», «quiero que abras Safari», «ábrame Safari» y «abrí Safari». Conserva mayúsculas, acentos y espacios interiores del dictado. La selección literal y las consultas a la API conservan su puntuación. Se mantienen los atajos nativos existentes.
+
+Las partículas finales ambiguas «pe», «pues», «ya pe» y «ya pues» sólo se retiran si llevan una coma antes. Así «busca Adapta PE» y «busca qué significa pues» conservan su contenido. «Abre Safari, pe» se prepara como «abre Safari». Es una diferencia conservadora respecto a la extensión de referencia; no se adivina si una palabra final pertenece a un nombre o consulta.
+
+Este bloque porta reglas de texto españolas. No añade reconocimiento acústico en seis idiomas ni acredita precisión con micrófonos reales.
+
+Lite conserva voz, lectura manual, filtros y mascotas. No se incorporan cámara, cinética, TalkBack automático ni IA en este bloque.
+
 **Voz y filtros de pantalla en una aplicación independiente para macOS.** Adapta PE Lite permite controlar aplicaciones, dictar, navegar y leer contenido accesible mediante órdenes en español. Incluye siete simulaciones de daltonismo, barra de menú y panel flotante. Conserva la identidad visual de Adapta PE con su logo Lite.
 
 Este repositorio contiene una app completa con sus propias fuentes, assets, proyecto Xcode y pruebas. No necesita el código ni la instalación de Base. No incluye cámara, cursor cinético, TalkBack automático ni IA externa. La lectura solicitada por voz sí pertenece al asistente Lite.
 
 [Instalación](#instalación-desde-terminal) · [Uso](#primer-inicio-y-uso) · [Comandos](#comandos-de-voz) · [Código](#documentación-del-código) · [Pruebas](#compilación-y-pruebas) · [Guía detallada](docs/LITE.md)
+
+## Mascotas y mejoras compartidas · 11 de octubre de 2026
+
+Se contrastaron las extensiones completas 13.0 y Lite 3.0, sus README y los motores actuales. Las mejoras se adaptan a las APIs del escritorio; cada edición conserva sus funciones.
+
+En **Mascota**, elige **Tinku** (gallito), **Cuchu** (cuy), **Yati** (llama) o **Sin mascota**, que es el valor inicial. Sólo se decodifica el atlas elegido. Los cuadros nativos de 96×112 conservan transparencia, secuencias de entrada/salida y duración de los sprites originales. Un temporizador sigue la duración de los cuadros; otro se programa una sola vez para el descanso. No se repinta toda la interfaz. La animación se detiene al dormir, con movimiento reducido y durante suspensión. Ocultar/cambiar libera el atlas anterior.
+
+La mascota mira hacia el cursor cercano, acompaña la llamada al asistente y cambia entre hablar y leer durante la salida de voz real. **Saludar**, **Dormir** y **Despertar** permiten controlar su estado; dormir se mantiene hasta despertar. El dibujo deja pasar los clics. Arrastra su nombre entre pantallas o pulsa **Mover con teclas**, usa las flechas y vuelve con **Escape**. **Otro monitor** cambia la pantalla sin arrastrar; se recuerdan mascota, monitor y posición relativa.
+
+### Interfaz, panel y compañía
+
+Las funciones principales quedan en secciones con nombres directos. **Usar panel** abre PiP; **Opciones** permite elegir mascota, filtros, esquina y monitor. Los dispositivos y preferencias de reconocimiento permanecen bajo sus opciones avanzadas. Lite mantiene voz, filtros y lectura manual por orden; no añade cámara, cursor, TalkBack automático ni IA. **Detener todo** permanece accesible.
+
+Activa **Mover mascota y panel juntos** para situar la mascota arriba de PiP. Arrastra el título del panel o el nombre de la mascota para mover ambos. Al separarlos, la mascota recupera su posición propia. Se recuerdan unión, monitor y posición relativa del panel; cambiar de esquina vuelve al anclaje. El tamaño se limita al área útil reservando lugar para la mascota. En macOS también puedes enfocar el título y usar las flechas. PiP conserva fondo sólido para leer incluso cuando está inactivo. El control Ajustes usa Liquid Glass desde macOS 26; versiones anteriores y transparencia reducida usan el estilo nativo sencillo.
+
+La llamada por voz usa el teléfono una vez; ejecutar una orden usa la laptop una vez. Leer y hablar acompañan únicamente la salida de voz real. Después vuelve a reposo, sin dejar teléfono/laptop trabajando indefinidamente. Tras **90 segundos sin interacción**, descansa y detiene su animación. La próxima acción despierta el descanso automático; **Dormir** manual exige **Despertar**. No duerme automáticamente durante una lectura o respuesta hablada.
+
+Di **«computadora, une mascota al panel»**, **«separa mascota del panel»** o **«panel esquina superior izquierda»**. También se admite **«mueve el panel a la esquina inferior derecha»**. Cambiar posición usa los mismos límites que el arrastre y conserva el control disponible.
+
+Después de llamar al asistente, admite **«mascota Cu Chu»**, **«mascota Tinku»**, **«mascota Yaty»**, **«elige mascota tiiinku»**, **«oculta mascota»**, **«saluda mascota»**, **«duerme mascota»** y **«despierta mascota»**. Las órdenes se reconocen completas; mencionar una mascota dentro de dictado o búsqueda conserva ese texto.
+
+**Lite continúa independiente:** voz, lectura manual solicitada, siete filtros y mascota. No se añaden cámara, cursor cinético, TalkBack automático ni IA.
+
+### Pantalla completa y varios monitores
+
+Los filtros usan una captura/composición local por pantalla. Se reconstruyen al conectar o retirar monitores y al cambiar su disposición. Las capas y mascotas se unen a Spaces y a otras apps en pantalla completa mediante [canJoinAllApplications](https://developer.apple.com/documentation/appkit/nswindow/collectionbehavior-swift.struct/canjoinallapplications); el filtro queda debajo de los controles propios de Adapta PE, evita capturarse a sí mismo y deja pasar los clics. **Preparando**, **Activo** y los errores explican el estado real.
+
+La captura requiere el permiso de Grabación de pantalla. Contenido protegido, escritorio seguro o juegos que usen presentación exclusiva pueden impedir captura/capas; usa pantalla completa de escritorio cuando la app lo permita. La lectura requiere controles AX publicados y la entrada puede ser rechazada por cada juego. No se promete acceso a superficies que el sistema protege. La composición por monitor tiene coste de GPU/memoria; 30 FPS es el límite solicitado, no una medición garantizada.
+
+### Código y comprobación
+
+- [`Mascot.swift`](Adapta-PE-Lite/Mascot.swift): atlas/secuencias, comandos, ventanas, voz y controles SwiftUI.
+- [`Mascotas/`](Adapta-PE-Lite/Mascotas/): sprites y manifiestos locales.
+
+Compilación Debug y 3 pruebas de lógica aprobadas con Xcode 27, sin activar sensores. Se comprobaron selección y controles de mascotas en la interfaz real. Micrófono, filtros activos, juegos exclusivos, monitor externo y consumo/FPS en equipo real requieren validación física. No se regeneró una distribución firmada/notarizada.
 
 ## Funciones
 
@@ -16,6 +63,7 @@ Este repositorio contiene una app completa con sus propias fuentes, assets, proy
 | Aplicaciones y navegador | Abrir, enfocar o cerrar apps, abrir sitios, buscar, manejar pestañas y ejecutar atajos conocidos. |
 | Accesibilidad | Enumerar menús/campos, enfocar, seleccionar, escribir, activar controles y leer bajo una orden explícita. |
 | Filtros | Protanomalía, protanopía, deuteranomalía, deuteranopía, tritanomalía, tritanopía y acromatopsia. |
+| Mascota opcional | Tinku, Cuchu o Yati; voz, estados, movimiento entre pantallas y teclado. |
 | Segundo plano | Cerrar ajustes mantiene la asistencia; barra de menú y panel flotante permiten controlarla. |
 | Preferencias | Micrófono, palabra de activación, opción de reconocimiento Apple por red, filtro, monitor/esquina del panel e inicio de sesión voluntario. |
 
@@ -182,7 +230,7 @@ El **3 de octubre de 2026** pasó la prueba de lógica desde este proyecto indep
 | Extensión Lite | [Adapta-PE-Lite](https://github.com/TheAlejo160/Adapta-PE-Lite) |
 | Windows Base | [Adapta-PE-Win](https://github.com/TheAlejo160/Adapta-PE-Win) |
 | Windows Lite | [Adapta-PE-Lite-Win](https://github.com/TheAlejo160/Adapta-PE-Lite-Win) |
-| macOS Base | [Adapta-PE-MacOS-Intel-Apple-Silicon-](https://github.com/TheAlejo160/Adapta-PE-MacOS-Intel-Apple-Silicon-) |
+| macOS completo | [Adapta-PE-MacOS-Intel-Apple-Silicon-](https://github.com/TheAlejo160/Adapta-PE-MacOS-Intel-Apple-Silicon-) |
 | macOS Lite | [Adapta-PE-Lite-MacOS](https://github.com/TheAlejo160/Adapta-PE-Lite-MacOS) |
 
 Cada plataforma tiene su propio proyecto, permisos y versión. Un ZIP de extensión no instala una app de escritorio.
@@ -190,3 +238,17 @@ Cada plataforma tiene su propio proyecto, permisos y versión. Un ZIP de extensi
 ## Licencia
 
 © 2026 Rodrigo Alejandro Apcho Aliaga — TheAlejo160. [LICENSE](LICENSE): **CC BY-NC-SA 4.0**. Se mantienen las atribuciones y condiciones del autor; publicar las fuentes no cambia sus condiciones de reutilización.
+
+## Filtros: presentación segura (17 de octubre de 2026)
+
+El filtro espera una imagen procesada antes de mostrar su ventana, evitando una cubierta negra al arrancar. Detener invalida inmediatamente la presentación: un cuadro que ya estaba en camino no vuelve a mostrarla. El estado informa de filtro activo al recibir el primer cuadro. Se mantienen las matrices, el permiso de Grabación de pantalla y el procesamiento local en memoria.
+
+FilterPresentationTests.testFirstImageAndCancellation usa una imagen sintética para probar la primera presentación, un solo aviso inicial y el rechazo después de invalidar. Esta prueba no acredita captura real, contenido protegido, monitores ni rendimiento físico.
+
+### Llamada personal y parada durante lectura: 17 de octubre de 2026
+
+La activación de voz ahora compara acentos y espacios equivalentes sin perder los índices del texto original. Una llamada personalizada como «Máquina Azul» admite transcripción sin tilde y espacios variables; el contenido que sigue conserva acentos, mayúsculas y espacios. Durante TTS, «por favor detén todo» atraviesa la protección de eco y llega a la parada global; dictado y búsquedas conservan su contenido. PersonalWakeTests y GlobalStopTests pasaron con Xcode en macOS Apple Silicon. Son pruebas textuales, no validación del micrófono ni del reconocimiento acústico.
+
+### Contraste, foco y micrófono: 17 de octubre de 2026
+
+El fondo de cabecera usa una capa negra del 60 % para que el subtítulo blanco mantenga contraste incluso sobre zonas claras (peor caso calculado 5,74:1). Los botones propios añaden un indicador interior de foco por teclado. El selector conserva Predeterminado y la selección válida; actualizar un ID retirado vuelve a Predeterminado. Una captura solicitada con un micrófono explícito ausente falla en lugar de usar silenciosamente otro dispositivo. Las pruebas de selección con IDs sintéticos y la compilación pasaron; no se validaron desconexión física, dibujo del foco ni VoiceOver.
